@@ -23,7 +23,7 @@ const Navbar = () => {
             size={40}
             toggled={isOpen}
             toggle={setOpen}
-            color="#032859"
+            color="#fff"
           ></Hamburger>
         </HamburgerContainer>
       )}
@@ -86,7 +86,7 @@ const Container = styled.div`
   width: 100%;
   margin: 0 auto;
   z-index: 1000;
-  background-color: var(--color-2);
+  background-color: var(--color-1);
   position: relative;
 `;
 
@@ -101,7 +101,7 @@ const animationOne = keyframes`
 
 const Menu = styled.div`
   display: flex;
-  background-color: var(--color-2);
+  background-color: var(--color-1);
   flex-direction: row;
   z-index: 100;
 
@@ -141,7 +141,7 @@ const HamburgerContainer = styled.div`
 const MenuLogoText = styled.h1`
   margin: auto 1.2rem;
   font-size: 1.5rem;
-  color: #032859;
+  color: var(--color-text);
   transition: all 0.3s ease;
   font-family: "Licorice", cursive;
   @media (max-width: 800px) {

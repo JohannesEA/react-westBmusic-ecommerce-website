@@ -68,8 +68,18 @@ const Footer = () => {
         )}
       </Container>
       <Copyright>
-        <SmallText>WestBMusic</SmallText> <AiOutlineCopyright fontSize={20} />{" "}
-        <SmallText>2022</SmallText>
+        <Copy>
+          {" "}
+          WestBMusic <AiOutlineCopyright fontSize={20} /> 2022
+        </Copy>
+
+        <SmallText
+          onClick={() => (window.location.href = "https://mojo-websites.no/")}
+          style={{ cursor: "pointer" }}
+        >
+          Website Created By mojo-websites.no
+        </SmallText>
+        <SmallText style={{ cursor: "pointer" }}>Admin</SmallText>
       </Copyright>
     </>
   );
@@ -81,7 +91,7 @@ const Container = styled.div`
   display: grid;
   min-height: 30vh;
   z-index: 1000;
-  background-color: var(--color-2);
+  background-color: var(--color-1);
   grid-template-columns: repeat(3, 2fr);
   @media (max-width: 800px) {
     grid-template-columns: auto;
@@ -92,7 +102,7 @@ const Container = styled.div`
 const Logo = styled.h1`
   margin: auto 1.2rem;
   font-size: 1.5rem;
-  color: #032859;
+  color: var(--color-text);
   transition: all 0.3s ease;
   font-family: "Licorice", cursive;
   @media (max-width: 800px) {
@@ -107,6 +117,7 @@ const InnerContainer = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+  color: white;
   height: 100%;
   background-color: ${(prop) => prop.color};
 `;
@@ -114,10 +125,12 @@ const InnerContainer = styled.div`
 const Copyright = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
   width: 100%;
-  background-color: var(--color-2);
+  min-height: 5vh;
+  background-color: var(--color-5);
+  color: var(--color-1);
 `;
 
 const Payment = styled.img`
@@ -128,4 +141,11 @@ const Payment = styled.img`
   @media (max-width: 250px) {
     width: 20vh;
   }
+`;
+
+const Copy = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 `;
