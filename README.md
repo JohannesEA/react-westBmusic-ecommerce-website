@@ -1,1 +1,1 @@
-E commerse website for selling and shopping music. 
+E commerce website for selling and shopping music. 
