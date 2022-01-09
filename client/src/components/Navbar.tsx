@@ -103,7 +103,7 @@ const Menu = styled.div`
   display: flex;
   background-color: var(--color-1);
   flex-direction: row;
-  z-index: 100;
+  z-index: 999;
 
   @media (max-width: 800px) {
     flex-direction: column;

@@ -25,7 +25,7 @@ export default ImageBox;
 const Container = styled.div`
   display: grid;
   min-height: 30vh;
-  z-index: 1000;
+  z-index: 1;
   background-color: var(--color-2);
   grid-template-rows: auto;
 `;
