@@ -2,12 +2,18 @@ import styled from "styled-components";
 import getWindowDimensions from "../common/Dimentions";
 import { SmallText } from "../style/text";
 
-const Button = () => {
+interface ButtonProps {
+  backgroundColor: String;
+  color: String;
+  text: String;
+}
+
+const Button = (props: ButtonProps) => {
   const { width } = getWindowDimensions();
 
   return (
-    <Container>
-      <SmallText></SmallText>
+    <Container background-color={props.backgroundColor}>
+      <SmallText>{props.text}</SmallText>
     </Container>
   );
 };

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import ImageBox from "../../components/ImageBox";
 import { Headline, Text, SmallText } from "../../style/text";
 import { ABOUT } from "../../dummydata/dummy";
+import Button from "../../components/Button";
 
 const About = () => {
   return (
@@ -10,6 +11,7 @@ const About = () => {
         <>
           <Left>
             <Headline>{about.title}</Headline>
+            <Text>{about.undertitle}</Text>
           </Left>
           <Right>
             <ImageBox
@@ -34,5 +36,8 @@ const Container = styled.div`
   background: ;
 `;
 
-const Left = styled.div``;
+const Left = styled.div`
+  display: grid;
+  grid-template-rows: repeat(3, 2fr);
+`;
 const Right = styled.div``;
