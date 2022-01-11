@@ -1,7 +1,7 @@
 export const HERO = [
   {
     id: 1,
-    src: "/assets/logos/mk-logo1.png",
+    src: "/assets/logos/logo.png",
     title: "Finn beaten som passer for ditt prosjekt!",
     undertitle: "Westsidebeatchesess",
   },
@@ -10,7 +10,7 @@ export const HERO = [
 export const ABOUT = [
   {
     id: 1,
-    src: "/assets/logos/mk-logo1.png",
+    src: "/assets/logos/logo1.png",
     title: "Om Oss",
     undertitle: "Vi lager beats som er perfekt for dine prosjekter.",
   },

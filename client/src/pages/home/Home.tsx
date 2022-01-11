@@ -4,13 +4,14 @@ import Navbar from "../../components/Navbar";
 import Hero from "./Hero";
 import About from "./About";
 import WorkProcess from "./WorkProcess";
+import { HERO, ABOUT } from "../../dummydata/dummy";
 
 const Home = () => {
   return (
     <Container>
       <Navbar />
-      <Hero />
-      <About />
+      <Hero content={HERO} />
+      <About content={ABOUT} />
       <WorkProcess />
       <Footer />
     </Container>

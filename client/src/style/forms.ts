@@ -37,3 +37,21 @@ export const ButtonContainer = styled.div`
   min-height: 2.5em;
   margin-top: 2em;
 `;
+
+export const ButtonStyleOne = {
+  color: "white",
+  backgroundColor: "blue",
+};
+
+export const ButtonValueOne = {
+  text: "Velg",
+};
+
+export const ButtonStyleTwo = {
+  color: "white",
+  backgroundColor: "red",
+};
+
+export const ButtonValueTwo = {
+  text: "Mer Info",
+};
