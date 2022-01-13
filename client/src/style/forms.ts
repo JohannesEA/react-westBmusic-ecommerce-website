@@ -10,6 +10,7 @@ export const Form = styled.form`
   width: 80%;
   border-radius: 0.5em;
   background-color: #fff;
+  height: auto;
 `;
 export const Label = styled.label`
   font-size: 0.8rem;
@@ -20,6 +21,18 @@ export const Input = styled.input`
   width: 90%;
   margin: 0.5em auto;
   min-height: 2.5em;
+  font-family: "Luxurious Roman", cursive;
+  border: 1px solid #d8d8d8;
+  border-radius: 0.5em;
+`;
+
+export const TextArea = styled.textarea`
+  width: 90%;
+  margin: 0.5em auto;
+  min-height: 5em;
+  font-family: "Luxurious Roman", cursive;
+  border: 1px solid #d8d8d8;
+  border-radius: 0.5em;
 `;
 export const ErrorMessage = styled.p`
   font-size: 1.2rem;

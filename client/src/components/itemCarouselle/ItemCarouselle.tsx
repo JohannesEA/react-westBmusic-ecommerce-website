@@ -2,47 +2,49 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { BEATS } from "../../dummydata/dummy";
-import "./itemcarouselle.css";
-import { StyledButtonFour } from "../../style/buttons";
-import { AiFillPlayCircle } from "react-icons/ai";
 import getWindowDimensions from "../../common/Dimentions";
-import { Text, SmallText } from "../../style/text";
+import ProductBox from "../../components/contentBoxes/ProductBox";
 
 const ItemCarouselle = () => {
   const { width } = getWindowDimensions();
+
+  const showSlides = () => {
+    if (width > 2000) {
+      return 5;
+    } else if (width < 2000 && width > 1500) {
+      return 4;
+    } else if (width < 1500 && width > 800) {
+      return 3;
+    } else if (width < 800 && width > 500) {
+      return 2;
+    } else {
+      return 1;
+    }
+  };
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: width > 800 ? 3 : 2,
+    slidesToShow: showSlides(),
     slidesToScroll: 1,
     arrows: false,
   };
 
   return (
-    <div>
+    <div
+      style={{ minHeight: "30em", padding: " 0 1em 3em 1em", color: "white" }}
+    >
       <Slider {...settings}>
         {BEATS.map((beat) => (
-          <div key={beat.id} className="slider-item-container">
-            <div className="img-container">
-              <img
-                className="slider-item-img"
-                src={beat.image}
-                alt={beat.title}
-              />
-            </div>
-            <br />
-            <Text>{beat.details}</Text>
-            <br />
-
-            <SmallText>Pris: {beat.price}</SmallText>
-            <br />
-
-            <div className="slider-item-buttons">
-              <StyledButtonFour>Mer Info</StyledButtonFour>
-              <AiFillPlayCircle fontSize={35} />
-            </div>
-          </div>
+          <ProductBox
+            key={beat.title}
+            title={beat.title}
+            image={beat.image}
+            details={beat.details}
+            category={beat.category}
+            price={beat.price}
+          />
         ))}
       </Slider>
     </div>

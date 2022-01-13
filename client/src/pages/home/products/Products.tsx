@@ -1,6 +1,7 @@
 import React from "react";
 import ItemCarouselle from "../../../components/itemCarouselle/ItemCarouselle";
 import { Headline } from "../../../style/text";
+import { Wrapper } from "./Products.styles";
 
 type Props = {
   title: string;
@@ -8,11 +9,11 @@ type Props = {
 
 const Products: React.FC<Props> = ({ title }) => {
   return (
-    <div className="products-container">
+    <Wrapper>
       <Headline>{title}</Headline>
       <br />
       <ItemCarouselle />
-    </div>
+    </Wrapper>
   );
 };
 

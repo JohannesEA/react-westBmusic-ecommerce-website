@@ -43,6 +43,7 @@ export const BEATS = [
     price: "2000 kr",
     mp3: "http://",
     details: "Veldig bra beat",
+    category: "house",
   },
   {
     id: 2,
@@ -51,6 +52,7 @@ export const BEATS = [
     price: "2000 kr",
     mp3: "http://",
     details: "Veldig bra beat",
+    category: "house",
   },
   {
     id: 3,
@@ -59,6 +61,7 @@ export const BEATS = [
     price: "2000 kr",
     mp3: "http://",
     details: "Veldig bra beat",
+    category: "house",
   },
   {
     id: 4,
@@ -67,5 +70,6 @@ export const BEATS = [
     price: "2000 kr",
     mp3: "http://",
     details: "Veldig bra beat",
+    category: "house",
   },
 ];

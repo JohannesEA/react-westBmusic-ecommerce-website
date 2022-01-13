@@ -10,6 +10,7 @@ import {
   Form,
   Label,
   Input,
+  TextArea,
   ErrorMessage,
   ConfirmMessage,
 } from "../../../style/forms";
@@ -33,15 +34,15 @@ const Contact = () => {
           </ContactInfoContainer>
         </ContactContainer>
         <Label>Navn</Label>
-        <Input placeholder="navn" />
+        <Input placeholder="Ola normann" />
         <Label>Epost</Label>
-        <Input placeholder="epost" />
+        <Input placeholder="olanormann@gmail.com" />
         <Label>Mobilnummer</Label>
-        <Input placeholder="mobilnummer" />
+        <Input placeholder="+47 99509035" />
         <Label>Tittel</Label>
-        <Input placeholder="navn" />
+        <Input placeholder="Bestilling av beat" />
         <Label>Melding</Label>
-        <Input placeholder="navn" />
+        <TextArea placeholder="Hei! Jeg ønsker å bestille en beat.." />
         <StyledButtonFive>Send</StyledButtonFive>
       </Form>
     </Wrapper>

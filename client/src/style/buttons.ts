@@ -59,16 +59,17 @@ export const StyledButtonFour = styled(IconButton)`
   z-index: 100;
   min-height: 1.5em;
   min-width: 5em;
+  max-height: 1.5em;
   width: 30%;
   height: 15%;
   margin-bottom: 1em !important;
-  background-color: RGBA(0, 0, 0, 0.5) !important;
+  background-color: RGBA(70, 70, 70, 0.5) !important;
   color: var(--color-text) !important;
   border-radius: 0.5em !important;
   transition: all 0.3s ease !important;
 
   &:hover {
-    background-color: RGBA(0, 0, 0, 0.7) !important;
+    background-color: RGBA(70, 70, 70, 1) !important;
     border-radius: 0em !important;
   }
 `;
@@ -77,7 +78,8 @@ export const StyledButtonFive = styled(IconButton)`
   position: fixed;
   z-index: 100;
   min-height: 1.5em;
-  max-height: 2em;
+  max-height: 1.8em;
+
   min-width: 4em;
   max-width: 6em;
   width: 30%;
