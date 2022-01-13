@@ -1,13 +1,15 @@
 {
-  "name": "api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "name": "api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "heroku-postbuild": "npm run start",
+        "start": "npm install && node ./index.js",
+        "dev": "concurrently \"npm run start\" \" cd ./client && npm start\"",
+        "pretty": "prettier --write \"./**/*.{js,jsx,json}\""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
 }
