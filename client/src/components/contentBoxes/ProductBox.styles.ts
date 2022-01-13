@@ -36,7 +36,6 @@ export const ImageContainer = styled.div`
   max-height: 15em;
   width: 100%;
   height: 100%;
-  background-color: red;
 `;
 
 export const Image = styled.img`

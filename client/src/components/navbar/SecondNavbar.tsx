@@ -1,11 +1,11 @@
 import styled, { keyframes } from "styled-components";
 import { Spiral as Hamburger } from "hamburger-react";
 import getWindowDimensions from "../../common/Dimentions";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link as DomLink } from "react-router-dom";
 
 const SecondNavbar = () => {
-  const { height, width } = getWindowDimensions();
+  const { width } = getWindowDimensions();
   const [isOpen, setOpen] = useState(false);
 
   return (
@@ -57,7 +57,7 @@ const Container = styled.div`
   height: 5em;
   width: 100%;
   margin: 0 auto;
-  z-index: 1000;
+  z-index: 10;
   background-color: var(--color-1);
   position: relative;
 `;
@@ -75,7 +75,8 @@ const Menu = styled.div`
   display: flex;
   background-color: var(--color-1);
   flex-direction: row;
-  z-index: 999;
+  z-index: 9;
+  margin-right: 150px;
 
   @media (max-width: 800px) {
     flex-direction: column;
@@ -105,6 +106,7 @@ const Menulink = styled.p`
 
 const HamburgerContainer = styled.div`
   margin: auto 1.2rem;
+  margin-right: 100px !important;
   @media (max-width: 800px) {
     margin: 1.2rem;
   }

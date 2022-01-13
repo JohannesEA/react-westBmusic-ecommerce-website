@@ -13,16 +13,6 @@ export const Wrapper = styled.div`
     grid-template-rows: 1fr;
   }
 
-  /* .hero-left {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-    max-height: 25em;
-    padding-top: 2em;
-    text-align: center;
-  } */
-
   .hero-right {
     width: 100%;
     height: 100%;

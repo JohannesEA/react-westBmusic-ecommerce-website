@@ -1,22 +1,22 @@
 import React from "react";
 
 //Components
-// import { CartItemType } from "../../pages/home/Home";
+import { CartItemType } from "../../App";
 import Button from "@material-ui/core/Button";
 
 //Styles
 import { Wrapper } from "./CartItems.styles";
 
 type Props = {
-  //   item: CartItemType;
-  //   addToCart: (clickedItem: CartItemType) => void;
+  item: CartItemType;
+  addToCart: (clickedItem: CartItemType) => void;
   removeFromCart: (id: number) => void;
 };
 
-const CartItem: React.FC<Props> = ({ removeFromCart }) => {
+const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => {
   return (
     <Wrapper>
-      {/* <div>
+      <div>
         <h3>{item.title}</h3>
         <div className="informations">
           <p>Price: ${item.price}</p>
@@ -43,7 +43,7 @@ const CartItem: React.FC<Props> = ({ removeFromCart }) => {
           </Button>
         </div>
       </div>
-      <img src={item.image} alt={item.title}></img> */}
+      <img src={item.image} alt={item.title}></img>
     </Wrapper>
   );
 };

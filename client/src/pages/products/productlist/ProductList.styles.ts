@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  margin-top: 8em;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   margin-bottom: 3em;
+  margin-top: 5em;
 `;
 
 export const ProductListContainer = styled.div`

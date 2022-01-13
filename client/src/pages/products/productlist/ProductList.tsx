@@ -7,7 +7,7 @@ type Props = {};
 
 const ProductList = () => {
   return (
-    <Wrapper>
+    <Wrapper id="hero">
       <Headline>Beats</Headline>
       <ProductListContainer>
         {BEATS.map((beat) => (

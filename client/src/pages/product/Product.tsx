@@ -16,7 +16,7 @@ type Props = {};
 
 const ProductList = () => {
   return (
-    <Wrapper>
+    <Wrapper id="hero">
       <SecondNavbar />
       <Headline>{BEATS[0].title}</Headline>
       <ProductContainer>

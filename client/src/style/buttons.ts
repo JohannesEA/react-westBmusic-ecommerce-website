@@ -2,8 +2,7 @@ import styled from "styled-components";
 import IconButton from "@material-ui/core/IconButton";
 
 export const StyledButton = styled.button`
-  position: fixed;
-  z-index: 100;
+  z-index: 8;
   height: 2em;
   width: 2em;
   margin-bottom: 1em !important;
@@ -12,9 +11,8 @@ export const StyledButton = styled.button`
   left: 95% !important;
 `;
 
-export const StyledButtonOne = styled(IconButton)`
-  position: fixed;
-  z-index: 100;
+export const StyledButtonOne = styled.button`
+  z-index: 8;
   height: 1.5em;
   width: 4em;
   margin-bottom: 1em !important;
@@ -30,8 +28,7 @@ export const StyledButtonOne = styled(IconButton)`
 `;
 
 export const StyledButtonTwo = styled(IconButton)`
-  position: fixed;
-  z-index: 100;
+  z-index: 8;
   height: 1.5em;
   width: 4em;
   margin-bottom: 1em !important;
@@ -47,8 +44,7 @@ export const StyledButtonTwo = styled(IconButton)`
 `;
 
 export const StyledButtonThree = styled(IconButton)`
-  position: fixed;
-  z-index: 100;
+  z-index: 8;
   min-height: 1.5em;
   min-width: 10em;
   width: 40%;
@@ -66,8 +62,7 @@ export const StyledButtonThree = styled(IconButton)`
 `;
 
 export const StyledButtonFour = styled(IconButton)`
-  position: fixed;
-  z-index: 100;
+  z-index: 8;
   min-height: 1.5em;
   min-width: 5em;
   max-height: 1.5em;
@@ -86,8 +81,7 @@ export const StyledButtonFour = styled(IconButton)`
 `;
 
 export const StyledButtonFive = styled(IconButton)`
-  position: fixed;
-  z-index: 100;
+  z-index: 8;
   min-height: 1.5em;
   max-height: 1.8em;
 
@@ -109,8 +103,7 @@ export const StyledButtonFive = styled(IconButton)`
 `;
 
 export const StyledButtonSix = styled(IconButton)`
-  position: fixed;
-  z-index: 100;
+  z-index: 8;
   min-height: 1.5em;
   min-width: 10em;
   max-height: 1.5em;
