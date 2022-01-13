@@ -78,7 +78,7 @@ function App() {
 
   // if (isLoading) return <LinearProgress />;
 
-  if (error) return <div>Something went wrong</div>;
+  if (error) return <Home />;
   return (
     <Router>
       <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
