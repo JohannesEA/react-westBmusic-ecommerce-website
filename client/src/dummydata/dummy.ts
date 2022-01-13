@@ -42,7 +42,7 @@ export const BEATS = [
     image: "/assets/images/img1.jpg",
     price: "2000 kr",
     mp3: "http://",
-    details: "Veldig bra beat",
+    description: "Veldig bra beat",
     category: "house",
   },
   {
@@ -51,7 +51,7 @@ export const BEATS = [
     image: "/assets/images/img4.jpg",
     price: "2000 kr",
     mp3: "http://",
-    details: "Veldig bra beat",
+    description: "Veldig bra beat",
     category: "house",
   },
   {
@@ -60,7 +60,7 @@ export const BEATS = [
     image: "/assets/images/img1.jpg",
     price: "2000 kr",
     mp3: "http://",
-    details: "Veldig bra beat",
+    description: "Veldig bra beat",
     category: "house",
   },
   {
@@ -69,7 +69,7 @@ export const BEATS = [
     image: "/assets/images/img3.jpg",
     price: "2000 kr",
     mp3: "http://",
-    details: "Veldig bra beat",
+    description: "Veldig bra beat",
     category: "house",
   },
   {
@@ -78,7 +78,7 @@ export const BEATS = [
     image: "/assets/images/img4.jpg",
     price: "2000 kr",
     mp3: "http://",
-    details: "Veldig bra beat",
+    description: "Veldig bra beat",
     category: "house",
   },
   {
@@ -87,7 +87,7 @@ export const BEATS = [
     image: "/assets/images/img7.jpg",
     price: "2000 kr",
     mp3: "http://",
-    details: "Veldig bra beat",
+    description: "Veldig bra beat",
     category: "house",
   },
 ];

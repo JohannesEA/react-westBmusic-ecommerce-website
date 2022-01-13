@@ -25,7 +25,7 @@ const ProductList = () => {
         </ImageContainer>
 
         <ProductDescription>
-          <Text>Description: {BEATS[0].details}</Text>
+          <Text>Description: {BEATS[0].description}</Text>
         </ProductDescription>
 
         <ProductDescription>

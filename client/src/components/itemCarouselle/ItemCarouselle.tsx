@@ -41,7 +41,7 @@ const ItemCarouselle = () => {
             key={beat.title}
             title={beat.title}
             image={beat.image}
-            details={beat.details}
+            description={beat.description}
             category={beat.category}
             price={beat.price}
           />

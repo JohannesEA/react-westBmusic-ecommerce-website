@@ -20,10 +20,10 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => {
         <h3>{item.title}</h3>
         <div className="informations">
           <p>Price: ${item.price}</p>
-          <p>Total: ${(item.amount * item.price).toFixed(2)}</p>
+          <p>Total: ${item.price.toFixed(2)}</p>
         </div>
 
-        <div className="buttons">
+        {/* <div className="buttons">
           <Button
             size="small"
             disableElevation
@@ -41,7 +41,7 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => {
           >
             +
           </Button>
-        </div>
+        </div> */}
       </div>
       <img src={item.image} alt={item.title}></img>
     </Wrapper>

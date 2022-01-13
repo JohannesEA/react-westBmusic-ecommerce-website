@@ -5,7 +5,7 @@
     "main": "server.js",
     "scripts": {
         "heroku-postbuild": "npm run start",
-        "start": "npm install && node ./index.js",
+        "start": "npm install && node ./server.js",
         "dev": "concurrently \"npm run start\" \" cd ./client && npm start\"",
         "pretty": "prettier --write \"./**/*.{js,jsx,json}\""
     },

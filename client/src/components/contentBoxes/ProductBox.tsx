@@ -7,15 +7,15 @@ import { AiFillPlayCircle } from "react-icons/ai";
 type Props = {
   title: string;
   image: string;
-  details: string;
   category: string;
   price: string;
+  description: string;
 };
 
 const ProductBox: React.FC<Props> = ({
   title,
   image,
-  details,
+  description,
   category,
   price,
 }) => {
@@ -27,7 +27,7 @@ const ProductBox: React.FC<Props> = ({
         <Image src={image} alt={title} />
       </ImageContainer>
 
-      <Text>{details}</Text>
+      <Text>{description}</Text>
 
       <Text>[{category}]</Text>
 

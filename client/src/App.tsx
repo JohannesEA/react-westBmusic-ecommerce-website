@@ -32,12 +32,12 @@ export type CartItemType = {
   image: string;
   price: number;
   title: string;
-  amount: number;
+  mp3: string;
 };
 
 //Call api
 const getProducts = async (): Promise<CartItemType[]> =>
-  await (await fetch("https:/fakestoreapi.com/products")).json();
+  await (await fetch("https://westbmusic.herokuapp.com/api/products")).json();
 
 function App() {
   const [cartOpen, setCartOpen] = useState(false);
@@ -46,35 +46,38 @@ function App() {
     "products",
     getProducts
   );
-  const getTotalItems = (items: CartItemType[]) =>
-    items.reduce((ack: number, item) => ack + item.amount, 0);
+  const getTotalItems = (items: CartItemType[]) => null;
+  //   items.reduce((ack: number, item) => ack , 0);
 
-  const handleAddToCart = (clickedItem: CartItemType) => {
-    setCartItems((prev) => {
-      //1. Is the item already added in the cart?
-      const isItemInCart = prev.find((item) => item.id === clickedItem.id);
-      if (isItemInCart) {
-        return prev;
-      }
-      //2. First time the item is added
-      return [...prev, { ...clickedItem, amount: 1 }];
-    });
-  };
-  const handleRemoveFromCart = (id: number) => {
-    setCartItems((prev) =>
-      prev.reduce((ack, item) => {
-        if (item.id === id) {
-          if (item.amount === 1) {
-            return ack;
-          } else {
-            return [...ack, { ...item, amount: item.amount - 1 }];
-          }
-        } else {
-          return [...ack, item];
-        }
-      }, [] as CartItemType[])
-    );
-  };
+  const handleAddToCart = (clickedItem: CartItemType) => null;
+  // {
+  //   setCartItems((prev) => {
+  //     //1. Is the item already added in the cart?
+  //     const isItemInCart = prev.find((item) => item.id === clickedItem.id);
+  //     if (isItemInCart) {
+  //       return prev;
+  //     }
+  //     //2. First time the item is added
+  //     return [...prev, { ...clickedItem, amount: 1 }];
+  //   });
+  // };
+  const handleRemoveFromCart = (id: number) => null;
+  console.log(data);
+  //{
+  //   setCartItems((prev) =>
+  //     prev.reduce((ack, item) => {
+  //       if (item.id === id) {
+  //         if (item.amount === 1) {
+  //           return ack;
+  //         } else {
+  //           return [...ack, { ...item, amount: item.amount - 1 }];
+  //         }
+  //       } else {
+  //         return [...ack, item];
+  //       }
+  //     }, [] as CartItemType[])
+  //   );
+  // };
 
   // if (isLoading) return <LinearProgress />;
 
