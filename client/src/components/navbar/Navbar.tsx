@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { Spiral as Hamburger } from "hamburger-react";
-import getWindowDimensions from "../common/Dimentions";
+import getWindowDimensions from "../../common/Dimentions";
 import { useState } from "react";
 import { Link } from "react-scroll";
 

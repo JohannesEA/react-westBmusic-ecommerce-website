@@ -5,7 +5,7 @@ export const Headline = styled.form`
 `;
 
 export const UnderText = styled.form`
-  font-size: clamp(1.5rem, 10vw, 3rem);
+  font-size: clamp(1.2rem, 10vw, 2rem);
 `;
 
 export const Text = styled.form`

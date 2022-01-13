@@ -1,0 +1,24 @@
+.slider-item-container {
+    max-height: 30em;
+    max-width: 25em;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.img-container {
+    max-height: 20em;
+    width: 100%;
+    height: 100%;
+}
+
+.slider-item-img {
+    width: 100%;
+    height: 20em;
+    max-height: 15em;
+}
+
+@media screen and (max-width: 800px) {
+    .slider-item-img {
+        height: 15em;
+    }
+}

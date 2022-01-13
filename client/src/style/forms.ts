@@ -9,6 +9,7 @@ export const Form = styled.form`
   box-shadow: 0px 0px 4px 2px #d8d8d8;
   width: 80%;
   border-radius: 0.5em;
+  background-color: #fff;
 `;
 export const Label = styled.label`
   font-size: 0.8rem;
@@ -30,28 +31,3 @@ export const ConfirmMessage = styled.p`
   color: blue;
   margin: 0.5em auto;
 `;
-
-export const ButtonContainer = styled.div`
-  width: 90%;
-  margin: 0.5em auto;
-  min-height: 2.5em;
-  margin-top: 2em;
-`;
-
-export const ButtonStyleOne = {
-  color: "white",
-  backgroundColor: "blue",
-};
-
-export const ButtonValueOne = {
-  text: "Velg",
-};
-
-export const ButtonStyleTwo = {
-  color: "white",
-  backgroundColor: "red",
-};
-
-export const ButtonValueTwo = {
-  text: "Mer Info",
-};

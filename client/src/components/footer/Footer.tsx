@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
-import getWindowDimensions from "../common/Dimentions";
+import getWindowDimensions from "../../common/Dimentions";
 import { Link } from "react-scroll";
-import { SmallText } from "../style/text";
+import { SmallText } from "../../style/text";
 import { AiOutlineCopyright } from "react-icons/ai";
 
 const Footer = () => {
@@ -93,6 +93,7 @@ const Container = styled.div`
   z-index: 1000;
   background-color: var(--color-1);
   grid-template-columns: repeat(3, 2fr);
+  border-top: 5px solid var(--color-6);
   @media (max-width: 800px) {
     grid-template-columns: auto;
     grid-template-rows: repeat(3, 2fr);
@@ -129,8 +130,8 @@ const Copyright = styled.div`
   text-align: center;
   width: 100%;
   min-height: 5vh;
-  background-color: var(--color-5);
-  color: var(--color-1);
+  background-color: var(--color-6);
+  color: var(--color-text);
 `;
 
 const Payment = styled.img`
