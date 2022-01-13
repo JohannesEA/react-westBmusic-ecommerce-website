@@ -7,6 +7,13 @@ body {
     font-family: "Luxurious Roman", cursive;
 }
 
+a {
+    color: inherit;
+    /* blue colors for links too */
+    text-decoration: inherit;
+    /* no underline */
+}
+
 .slick-dots li button:before {
     color: white !important;
     font-size: 1rem !important;

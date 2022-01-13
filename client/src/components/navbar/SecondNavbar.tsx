@@ -11,12 +11,11 @@ const SecondNavbar = () => {
   return (
     <Container id="navbar">
       <DomLink to="/">
-        <Menulink onClick={() => setOpen(!isOpen)}>WestBMusic</Menulink>
+        <MenuLogoText onClick={() => setOpen(!isOpen)}>WestBMusic</MenuLogoText>
       </DomLink>
 
       {width < 800 && (
         <HamburgerContainer>
-          {" "}
           <Hamburger
             label="Show menu"
             size={40}

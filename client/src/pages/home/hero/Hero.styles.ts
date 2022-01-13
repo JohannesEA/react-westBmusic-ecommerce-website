@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   grid-template-columns: repeat(1, 1fr);
   min-height: 40em;
   margin-bottom: 3em;
+  margin-top: 5em;
 
   @media (max-width: 800px) {
     min-height: 30em;
