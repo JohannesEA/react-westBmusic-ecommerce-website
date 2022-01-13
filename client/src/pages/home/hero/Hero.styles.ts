@@ -3,10 +3,11 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  min-height: 30em;
+  min-height: 40em;
   margin-bottom: 3em;
 
   @media (max-width: 800px) {
+    min-height: 30em;
     grid-template-columns: auto;
     grid-template-rows: 1fr;
   }

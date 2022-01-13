@@ -1,15 +1,15 @@
 import styled, { keyframes } from "styled-components";
 import { Spiral as Hamburger } from "hamburger-react";
 import getWindowDimensions from "../../common/Dimentions";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-scroll";
 
 const Navbar = () => {
-  const { width } = getWindowDimensions();
+  const { height, width } = getWindowDimensions();
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <Container>
+    <Container id="navbar">
       <Link to="hero" spy={true} smooth={true} offset={-100} duration={300}>
         {/* <Logo src="/assets/logos/logo3.png" alt="nav-logo" /> */}
         <MenuLogoText>WestBMusic</MenuLogoText>
@@ -79,6 +79,8 @@ const Navbar = () => {
 export default Navbar;
 
 const Container = styled.div`
+  position: fixed !important;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
