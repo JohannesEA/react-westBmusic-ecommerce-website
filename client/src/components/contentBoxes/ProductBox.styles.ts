@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  max-height: 30em;
+  max-height: 40em;
+  height: 35em;
   max-width: 25em;
+  width: 25em;
   transition: all 0.3s ease;
   text-align: center;
   box-shadow: 0px 0px 4px 2px #d8d8d8;
@@ -11,6 +13,26 @@ export const Wrapper = styled.div`
 
   @media (max-width: 1300px) {
     margin: 1em 0.5em;
+    width: 23em;
+  }
+
+  @media (max-width: 1200px) {
+    margin: 1em 0.5em;
+    width: 20em;
+  }
+  @media (max-width: 1050px) {
+    margin: 1em 0.5em;
+    width: 18em;
+  }
+
+  @media (max-width: 950px) {
+    margin: 1em 0.5em;
+    width: 16em;
+  }
+
+  @media (max-width: 850px) {
+    margin: 1em 0.5em;
+    width: 80%;
   }
 `;
 

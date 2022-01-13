@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import Navbar from "../../components/navbar/Navbar";
-import Footer from "../../components/footer/Footer";
 import Hero from "./hero/Hero";
 import About from "./about/About";
 import WorkProcess from "./workprocess/WorkProcess";
 import { HERO, ABOUT, WORK, PRODUCTSECTION } from "../../dummydata/dummy";
 import Products from "../../pages/home/products/Products";
 import Contact from "./contact/Contact";
+import Navbar from "../../components/navbar/Navbar";
 
 const Home = () => {
   return (
@@ -32,7 +31,6 @@ const Home = () => {
       />
       <Products title={PRODUCTSECTION[0].title} />
       <Contact />
-      <Footer />
     </Container>
   );
 };

@@ -9,7 +9,7 @@ type Props = {
 
 const Products: React.FC<Props> = ({ title }) => {
   return (
-    <Wrapper>
+    <Wrapper id="products">
       <Headline>{title}</Headline>
       <br />
       <ItemCarouselle />

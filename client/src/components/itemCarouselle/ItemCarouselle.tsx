@@ -9,11 +9,11 @@ const ItemCarouselle = () => {
   const { width } = getWindowDimensions();
 
   const showSlides = () => {
-    if (width > 2000) {
+    if (width > 2500) {
       return 5;
-    } else if (width < 2000 && width > 1500) {
+    } else if (width < 2500 && width > 2000) {
       return 4;
-    } else if (width < 1500 && width > 800) {
+    } else if (width < 2000 && width > 800) {
       return 3;
     } else if (width < 800 && width > 500) {
       return 2;

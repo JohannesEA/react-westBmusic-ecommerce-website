@@ -72,4 +72,22 @@ export const BEATS = [
     details: "Veldig bra beat",
     category: "house",
   },
+  {
+    id: 5,
+    title: "Beat 5",
+    image: "/assets/images/img4.jpg",
+    price: "2000 kr",
+    mp3: "http://",
+    details: "Veldig bra beat",
+    category: "house",
+  },
+  {
+    id: 6,
+    title: "Beat 6",
+    image: "/assets/images/img7.jpg",
+    price: "2000 kr",
+    mp3: "http://",
+    details: "Veldig bra beat",
+    category: "house",
+  },
 ];

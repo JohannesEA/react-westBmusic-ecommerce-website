@@ -2,19 +2,17 @@ import styled, { keyframes } from "styled-components";
 import { Spiral as Hamburger } from "hamburger-react";
 import getWindowDimensions from "../../common/Dimentions";
 import { useState, useEffect } from "react";
-import { Link } from "react-scroll";
 import { Link as DomLink } from "react-router-dom";
 
-const Navbar = () => {
+const SecondNavbar = () => {
   const { height, width } = getWindowDimensions();
   const [isOpen, setOpen] = useState(false);
 
   return (
     <Container id="navbar">
-      <Link to="hero" spy={true} smooth={true} offset={-100} duration={300}>
-        {/* <Logo src="/assets/logos/logo3.png" alt="nav-logo" /> */}
-        <MenuLogoText>WestBMusic</MenuLogoText>
-      </Link>
+      <DomLink to="/">
+        <Menulink onClick={() => setOpen(!isOpen)}>WestBMusic</Menulink>
+      </DomLink>
 
       {width < 800 && (
         <HamburgerContainer>
@@ -31,50 +29,25 @@ const Navbar = () => {
 
       {(isOpen || width > 800) && (
         <Menu>
-          <Link to="hero" spy={true} smooth={true} offset={-100} duration={300}>
-            {" "}
+          <DomLink to="/">
             <Menulink onClick={() => setOpen(!isOpen)}>Hjem</Menulink>
-          </Link>
-          <Link
-            to="about"
-            spy={true}
-            smooth={true}
-            offset={-100}
-            duration={300}
-          >
-            {" "}
+          </DomLink>
+          <DomLink to="/">
             <Menulink onClick={() => setOpen(!isOpen)}>Om</Menulink>
-          </Link>
+          </DomLink>
           <DomLink to="/products">
             <Menulink onClick={() => setOpen(!isOpen)}>Beats</Menulink>
           </DomLink>
-          {/* <Link
-            to="products"
-            spy={true}
-            smooth={true}
-            offset={-100}
-            duration={300}
-          >
-            {" "}
-            <Menulink onClick={() => setOpen(!isOpen)}>Beats</Menulink>
-          </Link> */}
-          <Link
-            to="contact"
-            spy={true}
-            smooth={true}
-            offset={-100}
-            duration={300}
-          >
-            {" "}
+          <DomLink to="/">
             <Menulink onClick={() => setOpen(!isOpen)}>Kontakt</Menulink>
-          </Link>
+          </DomLink>
         </Menu>
       )}
     </Container>
   );
 };
 
-export default Navbar;
+export default SecondNavbar;
 
 const Container = styled.div`
   position: fixed !important;

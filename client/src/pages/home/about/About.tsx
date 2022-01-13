@@ -13,7 +13,7 @@ const About: React.FC<Props> = ({ title, undertitle, image }) => {
   const { width } = getWindowDimensions();
 
   return (
-    <Wrapper>
+    <Wrapper id="about">
       <div className="about-left">
         <Headline>{title}</Headline>
         <br></br>

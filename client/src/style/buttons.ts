@@ -1,6 +1,17 @@
 import styled from "styled-components";
 import IconButton from "@material-ui/core/IconButton";
 
+export const StyledButton = styled.button`
+  position: fixed;
+  z-index: 100;
+  height: 2em;
+  width: 2em;
+  margin-bottom: 1em !important;
+  background-color: lightblue !important;
+  right: 20px !important;
+  left: 95% !important;
+`;
+
 export const StyledButtonOne = styled(IconButton)`
   position: fixed;
   z-index: 100;
@@ -94,5 +105,30 @@ export const StyledButtonFive = styled(IconButton)`
   &:hover {
     background-color: RGBA(0, 0, 0, 0.7) !important;
     border-radius: 0em !important;
+  }
+`;
+
+export const StyledButtonSix = styled(IconButton)`
+  position: fixed;
+  z-index: 100;
+  min-height: 1.5em;
+  min-width: 10em;
+  max-height: 1.5em;
+  width: 30%;
+  height: 15%;
+  margin-bottom: 1em !important;
+  background-color: RGBA(70, 70, 70, 0.5) !important;
+  color: var(--color-text) !important;
+  border-radius: 0.5em !important;
+  transition: all 0.3s ease !important;
+
+  &:hover {
+    background-color: RGBA(70, 70, 70, 1) !important;
+    border-radius: 0em !important;
+  }
+
+  @media (max-width: 800px) {
+    min-width: 8em;
+    max-height: 2.5em;
   }
 `;

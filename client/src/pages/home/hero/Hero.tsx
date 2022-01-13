@@ -1,11 +1,6 @@
 import { Wrapper } from "./Hero.styles";
-// import { Headline, UnderText, Text, SmallText } from "../../../style/text";
-// import getWindowDimensions from "../../../common/Dimentions";
-import {
-  StyledButtonOne,
-  StyledButtonTwo,
-  StyledButtonThree,
-} from "../../../style/buttons";
+import { StyledButtonThree } from "../../../style/buttons";
+import { Link as DomLink } from "react-router-dom";
 
 type Props = {
   title: string;
@@ -14,25 +9,12 @@ type Props = {
 };
 
 const Hero: React.FC<Props> = ({ title, undertitle, image }) => {
-  // const { width } = getWindowDimensions();
   return (
-    <Wrapper>
-      {/* {width > 800 && (
-        <div className="hero-left">
-          <Headline>{title}</Headline>
-          <br></br>
-          <UnderText>{undertitle}</UnderText>
-          <br></br>
-          <div className="buttons">
-            <StyledButtonOne>Kontakt</StyledButtonOne>
-            <StyledButtonTwo>Beats</StyledButtonTwo>
-          </div>
-        </div>
-      )} */}
-
+    <Wrapper id="hero">
       <div className="hero-right">
-        {/* <img src={image} alt={title}></img> */}
-        <StyledButtonThree>Beats</StyledButtonThree>
+        <DomLink to="/products">
+          <StyledButtonThree>Beats</StyledButtonThree>
+        </DomLink>
       </div>
     </Wrapper>
   );

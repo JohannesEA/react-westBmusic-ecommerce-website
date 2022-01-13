@@ -17,7 +17,7 @@ import {
 import { StyledButtonFive } from "../../../style/buttons";
 const Contact = () => {
   return (
-    <Wrapper>
+    <Wrapper id="contact">
       <Headline>Kontakt Oss</Headline>
       <br></br>
 
