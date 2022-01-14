@@ -11,29 +11,34 @@ import { Headline, Text } from "../../style/text";
 import { StyledButtonSix, StyledButtonFour } from "../../style/buttons";
 import { AiFillPlayCircle } from "react-icons/ai";
 import SecondNavbar from "../../components/navbar/SecondNavbar";
+import { CartItemType } from "../../App";
+import React from "react";
 
-type Props = {};
+// type Props = {
+//   item: CartItemType[];
+// };
 
 const ProductList = () => {
+  const item = BEATS[0];
   return (
     <Wrapper id="hero">
       <SecondNavbar />
-      <Headline>{BEATS[0].title}</Headline>
+      <Headline>{item.title}</Headline>
       <ProductContainer>
         <ImageContainer>
-          <Image src={BEATS[0].image} alt={BEATS[0].image} />
+          <Image src={item.image} alt={item.image} />
         </ImageContainer>
 
         <ProductDescription>
-          <Text>Description: {BEATS[0].description}</Text>
+          <Text>Description: {item.description}</Text>
         </ProductDescription>
 
         <ProductDescription>
-          <Text>Category: {BEATS[0].category}</Text>
+          <Text>Category: {item.category}</Text>
         </ProductDescription>
 
         <ProductDescription>
-          <Text>Price: {BEATS[0].price}</Text>
+          <Text>Price: {item.price}</Text>
         </ProductDescription>
 
         <Buttons>

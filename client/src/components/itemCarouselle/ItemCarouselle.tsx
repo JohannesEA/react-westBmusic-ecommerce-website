@@ -37,14 +37,7 @@ const ItemCarouselle = () => {
     >
       <Slider {...settings}>
         {BEATS.map((beat) => (
-          <ProductBox
-            key={beat.title}
-            title={beat.title}
-            image={beat.image}
-            description={beat.description}
-            category={beat.category}
-            price={beat.price}
-          />
+          <ProductBox key={beat.title} item={beat} />
         ))}
       </Slider>
     </div>

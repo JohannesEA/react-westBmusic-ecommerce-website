@@ -9,6 +9,9 @@ import { CartItemType } from "../../App";
 //Styles
 import { Wrapper } from "./Cart.styles";
 
+//Dummydata
+import { BEATS } from "../../dummydata/dummy";
+
 type Props = {
   cartItems: CartItemType[];
   addToCart: (clickedItem: CartItemType) => void;
@@ -18,6 +21,7 @@ type Props = {
 const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
   const calculateTotal = (items: CartItemType[]) => null;
   // items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
+  // const beats = BEATS as CartItemType[];
 
   return (
     <Wrapper>

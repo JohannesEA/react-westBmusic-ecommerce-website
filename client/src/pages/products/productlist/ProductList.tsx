@@ -6,19 +6,14 @@ import { Headline } from "../../../style/text";
 type Props = {};
 
 const ProductList = () => {
+  // const beats = BEATS as const;
+
   return (
     <Wrapper id="hero">
       <Headline>Beats</Headline>
       <ProductListContainer>
         {BEATS.map((beat) => (
-          <ProductBox
-            key={beat.title}
-            title={beat.title}
-            image={beat.image}
-            description={beat.description}
-            category={beat.category}
-            price={beat.price}
-          />
+          <ProductBox key={beat.id} item={beat} />
         ))}
       </ProductListContainer>
     </Wrapper>

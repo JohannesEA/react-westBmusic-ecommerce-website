@@ -29,12 +29,12 @@ import AdminHome from "./pages/admin/AdminHome";
 
 export type CartItemType = {
   id: number;
-  category: string;
-  description: string;
+  title: string;
   image: string;
   price: number;
-  title: string;
   mp3: string;
+  description: string;
+  category: string;
 };
 
 //Call api

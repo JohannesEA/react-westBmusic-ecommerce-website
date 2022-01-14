@@ -1,41 +1,45 @@
+import { useState } from "react";
 import getWindowDimensions from "../../common/Dimentions";
 import { Wrapper, ImageContainer, Image, Buttons } from "./ProductBox.styles";
 import { Text, SmallText } from "../../style/text";
 import { StyledButtonFour } from "../../style/buttons";
 import { AiFillPlayCircle } from "react-icons/ai";
+import { CartItemType } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
-  title: string;
-  image: string;
-  category: string;
-  price: string;
-  description: string;
+  item: CartItemType;
+  // addToCart: (clickedItem: CartItemType) => void;
+  // removeFromCart: (id: number) => void;
 };
 
-const ProductBox: React.FC<Props> = ({
-  title,
-  image,
-  description,
-  category,
-  price,
-}) => {
+const ProductBox: React.FC<Props> = ({ item }) => {
   const { width } = getWindowDimensions();
+  const [selectedProd, setSelectedProd] = useState({});
+  let path = "";
+  const navigate = useNavigate();
 
+  const handleClick = (item: CartItemType) => {
+    path = "/products/" + item.id;
+    navigate(path);
+  };
   return (
     <Wrapper>
       <ImageContainer>
-        <Image src={image} alt={title} />
+        <Image src={item.image} alt={item.title} />
       </ImageContainer>
 
-      <Text>{description}</Text>
+      <Text>{item.description}</Text>
 
-      <Text>[{category}]</Text>
+      <Text>[{item.category}]</Text>
 
-      <SmallText>Pris: {price}</SmallText>
+      <SmallText>Pris: {item.price}</SmallText>
       <br />
 
       <Buttons className="slider-item-buttons">
-        <StyledButtonFour>Mer Info</StyledButtonFour>
+        <StyledButtonFour onClick={() => handleClick(item)}>
+          Mer Info
+        </StyledButtonFour>
         <AiFillPlayCircle fontSize={35} />
       </Buttons>
     </Wrapper>
