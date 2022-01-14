@@ -73,14 +73,16 @@ const Footer = () => {
           WestBMusic <AiOutlineCopyright fontSize={20} /> 2022
         </Copy>
 
+        <SmallText style={{ cursor: "pointer" }}>Admin</SmallText>
+      </Copyright>
+      <CopyrightTwo>
         <SmallText
           onClick={() => (window.location.href = "https://mojo-websites.no/")}
           style={{ cursor: "pointer" }}
         >
           Website Created By mojo-websites.no
         </SmallText>
-        <SmallText style={{ cursor: "pointer" }}>Admin</SmallText>
-      </Copyright>
+      </CopyrightTwo>
     </>
   );
 };
@@ -101,6 +103,7 @@ const Container = styled.div`
 `;
 
 const Logo = styled.h1`
+  cursor: pointer;
   margin: auto 1.2rem;
   font-size: 1.5rem;
   color: var(--color-text);
@@ -127,6 +130,17 @@ const Copyright = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-align: center;
+  width: 100%;
+  min-height: 5vh;
+  background-color: var(--color-1);
+  color: var(--color-text);
+`;
+
+const CopyrightTwo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   width: 100%;
   min-height: 5vh;

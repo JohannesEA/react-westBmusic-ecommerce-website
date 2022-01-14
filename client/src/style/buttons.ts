@@ -50,13 +50,13 @@ export const StyledButtonThree = styled(IconButton)`
   width: 40%;
   height: 15%;
   margin-bottom: 1em !important;
-  background-color: RGBA(0, 0, 0, 0.5) !important;
+  background-color: rgba(6, 42, 75, 0.7) !important;
   color: var(--color-text) !important;
   border-radius: 0.5em !important;
   transition: all 0.3s ease !important;
 
   &:hover {
-    background-color: RGBA(0, 0, 0, 0.7) !important;
+    background-color: rgba(6, 42, 75, 1) !important;
     border-radius: 0em !important;
   }
 `;
@@ -69,13 +69,13 @@ export const StyledButtonFour = styled(IconButton)`
   width: 30%;
   height: 15%;
   margin-bottom: 1em !important;
-  background-color: RGBA(70, 70, 70, 0.5) !important;
+  background-color: var(--color-6) !important;
   color: var(--color-text) !important;
   border-radius: 0.5em !important;
   transition: all 0.3s ease !important;
 
   &:hover {
-    background-color: RGBA(70, 70, 70, 1) !important;
+    background-color: var(--color-6-hover) !important;
     border-radius: 0em !important;
   }
 `;
@@ -91,13 +91,13 @@ export const StyledButtonFive = styled(IconButton)`
   height: 15%;
   margin: 0 auto 0 auto !important;
 
-  background-color: RGBA(0, 0, 0, 0.5) !important;
+  background-color: var(--color-6) !important;
   color: var(--color-text) !important;
   border-radius: 0.5em !important;
   transition: all 0.3s ease !important;
 
   &:hover {
-    background-color: RGBA(0, 0, 0, 0.7) !important;
+    background-color: var(--color-6-hover) !important;
     border-radius: 0em !important;
   }
 `;
@@ -110,13 +110,13 @@ export const StyledButtonSix = styled(IconButton)`
   width: 30%;
   height: 15%;
   margin-bottom: 1em !important;
-  background-color: RGBA(70, 70, 70, 0.5) !important;
+  background-color: var(--color-6) !important;
   color: var(--color-text) !important;
   border-radius: 0.5em !important;
   transition: all 0.3s ease !important;
 
   &:hover {
-    background-color: RGBA(70, 70, 70, 1) !important;
+    background-color: var(--color-6-hover) !important;
     border-radius: 0em !important;
   }
 

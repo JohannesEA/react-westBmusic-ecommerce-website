@@ -85,6 +85,9 @@ function App() {
   return (
     <Router>
       <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
+        <button className="btn" onClick={() => setCartOpen(false)}>
+          X
+        </button>
         <Cart
           cartItems={cartItems}
           addToCart={handleAddToCart}

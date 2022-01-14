@@ -18,6 +18,10 @@ export const ContactContainer = styled.div`
   background-color: var(--color-text);
   color: var(--color-1);
   border-radius: 0.5em 0.5em 0 0;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
 `;
 
 export const ContactInfoContainer = styled.div`
