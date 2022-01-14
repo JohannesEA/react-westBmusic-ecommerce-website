@@ -21,8 +21,8 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
 
   return (
     <Wrapper>
-      <h1>Your shopping Cart</h1>
-      {cartItems.length === 0 ? <p>No items in cart</p> : null}
+      <h1>Din Handlekurv</h1>
+      {cartItems.length === 0 ? <p>Ingen produkter i handlekurven</p> : null}
       {cartItems.map((item) => (
         <CartItem
           key={item.id}
@@ -31,7 +31,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
           removeFromCart={removeFromCart}
         />
       ))}
-      <h2>Total: ${calculateTotal(cartItems)}</h2>
+      <h2>Total pris: {calculateTotal(cartItems)} ,-</h2>
     </Wrapper>
   );
 };

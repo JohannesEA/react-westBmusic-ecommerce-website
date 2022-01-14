@@ -2,7 +2,8 @@ import { useState } from "react";
 import SecondNavbar from "../../components/navbar/SecondNavbar";
 import { Wrapper, Form, Label, Input, ErrorMessage } from "../../style/forms";
 import { Text, SmallText } from "../../style/text";
-import { StyledButtonFive } from "../../style/buttons";
+import { StyledButtonFour } from "../../style/buttons";
+import { Link as DomLink } from "react-router-dom";
 
 const Login = () => {
   const [errorState, setErrorState] = useState({ isError: false, message: "" });
@@ -23,18 +24,22 @@ const Login = () => {
         </SmallText>
         <Label>Brukernavn</Label>
         <Input name="username" placeholder="olanormann123"></Input>
-        <Label>Passowrd</Label>
+        <Label>Passord</Label>
         <Input name="password" placeholder="********"></Input>
-        <StyledButtonFive
-          onClick={() =>
-            setErrorState({
-              isError: true,
-              message: "Feil brukernavn eller passord.",
-            })
-          }
-        >
-          Logg Inn
-        </StyledButtonFive>
+
+        <DomLink to="/admin">
+          <StyledButtonFour
+            style={{ margin: "1em auto 0em auto" }}
+            onClick={() =>
+              setErrorState({
+                isError: true,
+                message: "Feil brukernavn eller passord.",
+              })
+            }
+          >
+            Logg Inn
+          </StyledButtonFour>
+        </DomLink>
 
         {errorState.isError && (
           <ErrorMessage>{errorState.message}</ErrorMessage>

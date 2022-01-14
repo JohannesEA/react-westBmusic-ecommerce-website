@@ -64,13 +64,35 @@ export const FileInput = styled.input.attrs({
 `;
 
 export const FileInputContainer = styled.button`
-  background-color: var(--color-6);
+  background-color: var(--color-6-hover);
   color: var(--color-text);
   height: 6em;
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   border-radius: 0.5em;
 
   &:hover {
-    background-color: var(--color-6-hover);
+    background-color: var(--color-6);
+  }
+`;
+
+export const Select = styled.select`
+  width: 90%;
+  height: 5em;
+  background: white;
+  color: gray;
+  padding-left: 5px;
+  font-size: 14px;
+  border: 1px solid var(--color-1);
+  margin-left: 10px;
+  border-radius: 0.5em;
+
+  option {
+    color: black;
+    background: white;
+    display: flex;
+    white-space: pre;
+    min-height: 20px;
+    padding: 0px 2px 1px;
   }
 `;

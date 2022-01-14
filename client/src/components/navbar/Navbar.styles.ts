@@ -28,6 +28,7 @@ export const Menu = styled.div`
   background-color: var(--color-1);
   flex-direction: row;
   z-index: 9;
+  margin-right: 3em;
 
   @media (max-width: 800px) {
     flex-direction: column;
@@ -57,6 +58,8 @@ export const Menulink = styled.p`
 
 export const HamburgerContainer = styled.div`
   margin: auto 1.2rem;
+  margin-right: 4em !important;
+
   @media (max-width: 800px) {
     margin: 1.2rem;
   }

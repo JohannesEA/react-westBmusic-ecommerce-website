@@ -3,6 +3,7 @@ import {
   Wrapper,
   Form,
   Label,
+  Input,
   ErrorMessage,
   FileInput,
   FileInputContainer,
@@ -10,17 +11,27 @@ import {
 import { Headline, UnderText, SmallText } from "../../style/text";
 import { StyledButtonFive } from "../../style/buttons";
 
-const AdminHeroSectionHandler = () => {
+const AdminAboutSectionHandler = () => {
   const [errorState, setErrorState] = useState({ isError: false, message: "" });
-  const [userInput, setUserInput] = useState({ heroImage: "" });
+  const [userInput, setUserInput] = useState({
+    aboutTitle: "",
+    aboutDescription: "",
+    aboutImage: "",
+  });
 
   return (
     <Wrapper>
-      <Headline>Hero</Headline>
-      <UnderText>Rediger bilde for hero seksjonen</UnderText>
+      <Headline>Om</Headline>
+      <UnderText>Rediger bilde for om-seksjonen</UnderText>
 
       <Form style={{ marginTop: "3em" }}>
-        <Label>Bilde</Label>
+        <Label>Tittel</Label>
+        <Input name="aboutTitle" placeholder="Om Oss"></Input>
+        <Label>Beskrivelse</Label>
+        <Input
+          name="aboutDescription"
+          placeholder="Vi lager beats som er perfekt for dine prosjekter"
+        ></Input>
         <FileInputContainer
           style={{ marginBottom: "1em" }}
           onClick={() =>
@@ -28,7 +39,7 @@ const AdminHeroSectionHandler = () => {
           }
         >
           <SmallText>Last Opp Bilde</SmallText>
-          <FileInput id="file" name="heroImage"></FileInput>
+          <FileInput id="file" name="aboutImage"></FileInput>
         </FileInputContainer>
 
         <StyledButtonFive
@@ -50,4 +61,4 @@ const AdminHeroSectionHandler = () => {
   );
 };
 
-export default AdminHeroSectionHandler;
+export default AdminAboutSectionHandler;

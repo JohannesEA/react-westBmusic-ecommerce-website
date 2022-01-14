@@ -128,29 +128,23 @@ export const StyledButtonSix = styled(IconButton)`
 `;
 
 export const CartButton = styled.button`
-  margin-top: -57px !important;
   width: 30px;
   height: 30px;
   z-index: 101;
-  position: fixed;
   color: #fff;
   background: transparent;
   border: none;
   outline: none;
   border-radius: 0.5em;
-  margin: 0 0 0 45%;
+  margin: 0px;
+  right: 20px;
+  top: 24px;
+  left: auto;
+  position: fixed;
 
   &:hover {
     box-shadow: 1px 1px 0.2px 0.5px var(--color-text);
     animation: ${colorChange} 1.5s infinite;
-  }
-
-  @media (max-width: 800px) {
-    margin: 0 0 0 48%;
-  }
-
-  @media (max-width: 450px) {
-    margin: 0 0 0 46%;
   }
 `;
 
@@ -159,6 +153,7 @@ export const DeleteButton = styled.button`
   width: 2em;
   height: 2em;
   position: fixed;
+  text-align: center;
   margin: 0.2em;
   color: #fff;
   box-shadow: 0.5px 0.5px 0.2px 0.5px var(--color-text);
