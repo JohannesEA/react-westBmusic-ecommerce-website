@@ -150,7 +150,10 @@ export const CartButton = styled.button`
 
 export const DeleteButton = styled.button`
   z-index: 1000;
-  width: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3em;
   height: 2em;
   position: fixed;
   text-align: center;
