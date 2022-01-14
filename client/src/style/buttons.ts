@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import IconButton from "@material-ui/core/IconButton";
+import { colorChange } from "../animations/animations";
 
 export const StyledButton = styled.button`
   z-index: 8;
@@ -123,5 +124,51 @@ export const StyledButtonSix = styled(IconButton)`
   @media (max-width: 800px) {
     min-width: 8em;
     max-height: 2.5em;
+  }
+`;
+
+export const CartButton = styled.button`
+  margin-top: -57px !important;
+  width: 30px;
+  height: 30px;
+  z-index: 101;
+  position: fixed;
+  color: #fff;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-radius: 0.5em;
+  margin: 0 0 0 45%;
+
+  &:hover {
+    box-shadow: 1px 1px 0.2px 0.5px var(--color-text);
+    animation: ${colorChange} 1.5s infinite;
+  }
+
+  @media (max-width: 800px) {
+    margin: 0 0 0 48%;
+  }
+
+  @media (max-width: 450px) {
+    margin: 0 0 0 46%;
+  }
+`;
+
+export const DeleteButton = styled.button`
+  z-index: 1000;
+  width: 2em;
+  height: 2em;
+  position: fixed;
+  margin: 0.2em;
+  color: #fff;
+  box-shadow: 0.5px 0.5px 0.2px 0.5px var(--color-text);
+  background-color: #1e1e35;
+  border: none;
+  outline: none;
+  border-radius: 0.5em;
+
+  &:hover {
+    box-shadow: 1px 1px 0.2px 0.5px var(--color-text);
+    animation: ${colorChange} 1.5s infinite;
   }
 `;

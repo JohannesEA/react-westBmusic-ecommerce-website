@@ -65,33 +65,6 @@ a {
     }
 }
 
-.kc_fab_main_btn {
-    margin-top: -57px !important;
-    width: 30px;
-    height: 30px;
-    z-index: 101;
-    position: fixed;
-    color: #fff;
-    box-shadow: 0.5px 0.5px 0.2px 0.5px var(--color-text);
-    background: transparent;
-    border: none;
-    outline: none;
-    border-radius: 0.5em;
-    margin: 0 0 0 50%;
-}
-
-.kc_fab_main_btn:hover {
-    box-shadow: 1px 1px 0.2px 0.5px var(--color-text);
-    animation: slidein 1.5s infinite;
-}
-
-.kc_fab_main_btn:focus {
-    transform: scale(1.1);
-    transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-}
-
 .btn {
     z-index: 1000;
     width: 2em;

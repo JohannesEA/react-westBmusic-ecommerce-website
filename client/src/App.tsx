@@ -1,28 +1,28 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Home from "./pages/home/Home";
-import Products from "./pages/products/Products";
-import Product from "./pages/product/Product";
-import GlobalStyles from "./style/globalStyles";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   Navigate,
 } from "react-router-dom";
+
+//Components
+import Home from "./pages/home/Home";
+import Products from "./pages/products/Products";
+import Product from "./pages/product/Product";
+import GlobalStyles from "./style/globalStyles";
 import Footer from "./components/footer/Footer";
 import Drawer from "@material-ui/core/Drawer";
 import Cart from "./components/cart/Cart";
-import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import Badge from "@material-ui/core/Badge";
-import { StyledButton } from "./style/buttons";
 import Confirm from "./pages/confirm/Confirm";
 import Error from "./pages/error/Error";
+import LoadingPage from "./components/loading/LoadingPage";
+
+//styles
+import { CartButton, DeleteButton } from "./style/buttons";
 import { useQuery } from "react-query";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import Fab from "@mui/material/Fab";
-import AddIcon from "@mui/icons-material/Add";
-import Box from "@mui/material/Box";
 import { BsCartPlus } from "react-icons/bs";
 
 export type CartItemType = {
@@ -47,47 +47,16 @@ function App() {
     getProducts
   );
   const getTotalItems = (items: CartItemType[]) => null;
-  //   items.reduce((ack: number, item) => ack , 0);
-
   const handleAddToCart = (clickedItem: CartItemType) => null;
-  // {
-  //   setCartItems((prev) => {
-  //     //1. Is the item already added in the cart?
-  //     const isItemInCart = prev.find((item) => item.id === clickedItem.id);
-  //     if (isItemInCart) {
-  //       return prev;
-  //     }
-  //     //2. First time the item is added
-  //     return [...prev, { ...clickedItem, amount: 1 }];
-  //   });
-  // };
   const handleRemoveFromCart = (id: number) => null;
   console.log(data);
-  //{
-  //   setCartItems((prev) =>
-  //     prev.reduce((ack, item) => {
-  //       if (item.id === id) {
-  //         if (item.amount === 1) {
-  //           return ack;
-  //         } else {
-  //           return [...ack, { ...item, amount: item.amount - 1 }];
-  //         }
-  //       } else {
-  //         return [...ack, item];
-  //       }
-  //     }, [] as CartItemType[])
-  //   );
-  // };
 
-  // if (isLoading) return <LinearProgress />;
+  if (isLoading) return <LoadingPage />;
 
-  if (error) return <Home />;
   return (
     <Router>
       <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
-        <button className="btn" onClick={() => setCartOpen(false)}>
-          X
-        </button>
+        <DeleteButton onClick={() => setCartOpen(false)}>X</DeleteButton>
         <Cart
           cartItems={cartItems}
           addToCart={handleAddToCart}
@@ -95,11 +64,11 @@ function App() {
         />
       </Drawer>
 
-      <button className="kc_fab_main_btn" onClick={() => setCartOpen(true)}>
+      <CartButton className="kc_fab_main_btn" onClick={() => setCartOpen(true)}>
         <Badge badgeContent={getTotalItems(cartItems)} color="error">
-          <BsCartPlus />
+          <BsCartPlus fontSize="20px" />
         </Badge>
-      </button>
+      </CartButton>
       <GlobalStyles />
 
       <Routes>
