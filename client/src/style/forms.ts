@@ -1,6 +1,18 @@
 import styled from "styled-components";
 
+export const Wrapper = styled.div`
+  margin-top: 5em;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 3em;
+  background-color: var(--color-1);
+`;
+
 export const Form = styled.form`
+  margin: 0 auto;
   display: flex;
   text-align: center;
   justify-content: center;
@@ -43,4 +55,22 @@ export const ConfirmMessage = styled.p`
   font-size: 1.2rem;
   color: blue;
   margin: 0.5em auto;
+`;
+
+export const FileInput = styled.input.attrs({
+  type: "file",
+})`
+  display: none;
+`;
+
+export const FileInputContainer = styled.button`
+  background-color: var(--color-6);
+  color: var(--color-text);
+  height: 6em;
+  width: 100%;
+  border-radius: 0.5em;
+
+  &:hover {
+    background-color: var(--color-6-hover);
+  }
 `;

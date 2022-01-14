@@ -24,6 +24,8 @@ import LoadingPage from "./components/loading/LoadingPage";
 import { CartButton, DeleteButton } from "./style/buttons";
 import { useQuery } from "react-query";
 import { BsCartPlus } from "react-icons/bs";
+import Login from "./pages/login/Login";
+import AdminHome from "./pages/admin/AdminHome";
 
 export type CartItemType = {
   id: number;
@@ -76,6 +78,9 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<Product />} />
         <Route path="/confirm" element={<Confirm />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/admin" element={<AdminHome />} />
+
         <Route path="/error" element={<Error />} />
         <Route path="*" element={<Error />} />
       </Routes>

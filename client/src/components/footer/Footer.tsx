@@ -3,6 +3,7 @@ import getWindowDimensions from "../../common/Dimentions";
 import { Link } from "react-scroll";
 import { SmallText } from "../../style/text";
 import { AiOutlineCopyright } from "react-icons/ai";
+import { Link as DomLink } from "react-router-dom";
 
 const Footer = () => {
   const { width } = getWindowDimensions();
@@ -72,8 +73,9 @@ const Footer = () => {
           {" "}
           WestBMusic <AiOutlineCopyright fontSize={20} /> 2022
         </Copy>
-
-        <SmallText style={{ cursor: "pointer" }}>Admin</SmallText>
+        <DomLink to="/login">
+          <SmallText style={{ cursor: "pointer" }}>Admin</SmallText>
+        </DomLink>
       </Copyright>
       <CopyrightTwo>
         <SmallText

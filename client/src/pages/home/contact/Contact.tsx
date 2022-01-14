@@ -1,3 +1,6 @@
+import { useState } from "react";
+
+//Styles
 import {
   Wrapper,
   ContactContainer,
@@ -12,10 +15,15 @@ import {
   Input,
   TextArea,
   ErrorMessage,
-  ConfirmMessage,
 } from "../../../style/forms";
+
 import { StyledButtonFive } from "../../../style/buttons";
 const Contact = () => {
+  const [messageState, setMessageState] = useState({
+    isError: false,
+    message: "",
+  });
+
   return (
     <Wrapper id="contact">
       <Headline>Kontakt Oss</Headline>
@@ -43,7 +51,17 @@ const Contact = () => {
         <Input placeholder="Bestilling av beat" />
         <Label>Melding</Label>
         <TextArea placeholder="Hei! Jeg ønsker å bestille en beat.." />
-        <StyledButtonFive>Send</StyledButtonFive>
+        <StyledButtonFive
+          onClick={() =>
+            setMessageState({ isError: true, message: "Feil i en av feltene" })
+          }
+        >
+          Send
+        </StyledButtonFive>
+
+        {messageState.isError && (
+          <ErrorMessage>{messageState.message}</ErrorMessage>
+        )}
       </Form>
     </Wrapper>
   );
