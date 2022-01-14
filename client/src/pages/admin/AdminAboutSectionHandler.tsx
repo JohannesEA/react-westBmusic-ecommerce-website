@@ -22,7 +22,7 @@ const AdminAboutSectionHandler = () => {
   return (
     <Wrapper>
       <Headline>Om</Headline>
-      <UnderText>Rediger bilde for om-seksjonen</UnderText>
+      <UnderText>Rediger om-seksjonen</UnderText>
 
       <Form style={{ marginTop: "3em" }}>
         <Label>Tittel</Label>

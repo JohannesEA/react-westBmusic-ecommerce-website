@@ -22,7 +22,7 @@ const AdminWorkProcessSectionHandler = () => {
   return (
     <Wrapper>
       <Headline>Jobbprosess</Headline>
-      <UnderText>Rediger bilde for jobbprosess-seksjonen</UnderText>
+      <UnderText>Rediger jobbprosess-seksjonen</UnderText>
 
       <Form style={{ marginTop: "3em" }}>
         <Label>Tittel</Label>
