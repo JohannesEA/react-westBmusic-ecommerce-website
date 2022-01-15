@@ -36,12 +36,13 @@ export const Image = styled.img`
 `;
 
 export const Buttons = styled.div`
-  width: 100%;
+  width: 90%;
+  margin: 0 auto 0.5em auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  @media (max-width: 800px) {
+  @media (max-width: 250px) {
     flex-direction: column;
   }
 `;

@@ -9,11 +9,10 @@ import { Wrapper } from "./CartItems.styles";
 
 type Props = {
   item: CartItemType;
-  addToCart: (clickedItem: CartItemType) => void;
-  removeFromCart: (id: number) => void;
+  removeFromCart: (item: CartItemType) => void;
 };
 
-const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => {
+const CartItem: React.FC<Props> = ({ item, removeFromCart }) => {
   return (
     <Wrapper>
       <div>
@@ -23,25 +22,16 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => {
           <p>Total: ${item.price.toFixed(2)}</p>
         </div>
 
-        {/* <div className="buttons">
+        <div className="buttons">
           <Button
             size="small"
             disableElevation
             variant="contained"
-            onClick={() => removeFromCart(item.id)}
+            onClick={() => removeFromCart(item)}
           >
             -
           </Button>
-          <p>{item.amount}</p>
-          <Button
-            size="small"
-            disableElevation
-            variant="contained"
-            onClick={() => addToCart(item)}
-          >
-            +
-          </Button>
-        </div> */}
+        </div>
       </div>
       <img src={item.image} alt={item.title}></img>
     </Wrapper>

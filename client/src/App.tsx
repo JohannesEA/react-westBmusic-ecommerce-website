@@ -48,10 +48,17 @@ function App() {
     "products",
     getProducts
   );
-  const getTotalItems = (items: CartItemType[]) => null;
-  const handleAddToCart = (clickedItem: CartItemType) => null;
-  const handleRemoveFromCart = (id: number) => null;
-  console.log(data);
+  const getTotalItems = (items?: CartItemType[]) => null;
+
+  // const handleRemoveFromCart = (item: CartItemType) => {
+  //   var index = cartItems.indexOf(item);
+  //   if (index !== -1) {
+  //     cartItems.splice(index, 1);
+  //     setCartItems(cartItems);
+  //   }
+  // };
+
+  const handleRemoveFromCart = (item: CartItemType) => null;
 
   if (isLoading) return <LoadingPage />;
 
@@ -59,15 +66,11 @@ function App() {
     <Router>
       <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
         <DeleteButton onClick={() => setCartOpen(false)}>X</DeleteButton>
-        <Cart
-          cartItems={cartItems}
-          addToCart={handleAddToCart}
-          removeFromCart={handleRemoveFromCart}
-        />
+        <Cart cartItems={cartItems} removeFromCart={handleRemoveFromCart} />
       </Drawer>
 
       <CartButton className="kc_fab_main_btn" onClick={() => setCartOpen(true)}>
-        <Badge badgeContent={getTotalItems(cartItems)} color="error">
+        <Badge badgeContent={getTotalItems()} color="error">
           <BsCartPlus fontSize="20px" />
         </Badge>
       </CartButton>

@@ -14,11 +14,10 @@ import { BEATS } from "../../dummydata/dummy";
 
 type Props = {
   cartItems: CartItemType[];
-  addToCart: (clickedItem: CartItemType) => void;
-  removeFromCart: (id: number) => void;
+  removeFromCart: (item: CartItemType) => void;
 };
 
-const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
+const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
   const calculateTotal = (items: CartItemType[]) => null;
   // items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
   // const beats = BEATS as CartItemType[];
@@ -28,12 +27,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
       <h1>Din Handlekurv</h1>
       {cartItems.length === 0 ? <p>Ingen produkter i handlekurven</p> : null}
       {cartItems.map((item) => (
-        <CartItem
-          key={item.id}
-          item={item}
-          addToCart={addToCart}
-          removeFromCart={removeFromCart}
-        />
+        <CartItem key={item.id} item={item} removeFromCart={removeFromCart} />
       ))}
       <h2>Total pris: {calculateTotal(cartItems)} ,-</h2>
     </Wrapper>

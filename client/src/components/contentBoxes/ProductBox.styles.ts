@@ -28,7 +28,7 @@ export const Wrapper = styled.div`
 
   @media (max-width: 850px) {
     width: 80%;
-    height: auto;
+    min-height: 31em;
   }
 `;
 
@@ -49,4 +49,13 @@ export const Image = styled.img`
   }
 `;
 
-export const Buttons = styled.div``;
+export const Buttons = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto 0.5em auto;
+  @media (max-width: 850px) {
+    margin-bottom: 0.5em !important;
+  }
+`;

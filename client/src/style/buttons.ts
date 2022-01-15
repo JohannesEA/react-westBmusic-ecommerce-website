@@ -81,6 +81,24 @@ export const StyledButtonFour = styled(IconButton)`
   }
 `;
 
+export const StyledButtonSeven = styled(IconButton)`
+  z-index: 8;
+  min-height: 1.5em;
+  min-width: 5em;
+  max-height: 1.5em;
+  width: 30%;
+  height: 15%;
+  background-color: var(--color-6) !important;
+  color: var(--color-text) !important;
+  border-radius: 0.5em !important;
+  transition: all 0.3s ease !important;
+
+  &:hover {
+    background-color: var(--color-6-hover) !important;
+    border-radius: 0em !important;
+  }
+`;
+
 export const StyledButtonFive = styled(IconButton)`
   z-index: 8;
   min-height: 1.5em;

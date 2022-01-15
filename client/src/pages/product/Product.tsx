@@ -9,10 +9,11 @@ import {
 import { BEATS } from "../../dummydata/dummy";
 import { Headline, Text } from "../../style/text";
 import { StyledButtonSix, StyledButtonFour } from "../../style/buttons";
-import { AiFillPlayCircle } from "react-icons/ai";
 import SecondNavbar from "../../components/navbar/SecondNavbar";
 import { CartItemType } from "../../App";
 import React from "react";
+import { BsCartPlus } from "react-icons/bs";
+import { AiFillPlayCircle, AiOutlinePlayCircle } from "react-icons/ai";
 
 // type Props = {
 //   item: CartItemType[];
@@ -30,22 +31,21 @@ const ProductList = () => {
         </ImageContainer>
 
         <ProductDescription>
-          <Text>Description: {item.description}</Text>
+          <Text>Beskrivelse: {item.description}</Text>
         </ProductDescription>
 
         <ProductDescription>
-          <Text>Category: {item.category}</Text>
+          <Text>Kategori: {item.category}</Text>
         </ProductDescription>
 
         <ProductDescription>
-          <Text>Price: {item.price}</Text>
+          <Text>Pris: {item.price}</Text>
         </ProductDescription>
 
         <Buttons>
-          <StyledButtonFour>
-            <AiFillPlayCircle fontSize={35} />
-          </StyledButtonFour>
-          <StyledButtonSix>Legg til i handleliste</StyledButtonSix>
+          <AiOutlinePlayCircle fontSize={50} />
+
+          <BsCartPlus fontSize={50} />
         </Buttons>
       </ProductContainer>
     </Wrapper>
