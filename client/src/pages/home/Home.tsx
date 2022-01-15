@@ -6,8 +6,13 @@ import { HERO, ABOUT, WORK, PRODUCTSECTION } from "../../dummydata/dummy";
 import Products from "../../pages/home/products/Products";
 import Contact from "./contact/Contact";
 import Navbar from "../../components/navbar/Navbar";
+import { CartItemType } from "../../App";
 
-const Home = () => {
+type Props = {
+  addToCart: (clickedItem: CartItemType) => void;
+};
+
+const Home: React.FC<Props> = ({ addToCart }) => {
   return (
     <Container>
       <Navbar />
@@ -29,7 +34,7 @@ const Home = () => {
         p3={WORK[0].p3}
         p4={WORK[0].p4}
       />
-      <Products title={PRODUCTSECTION[0].title} />
+      <Products title={PRODUCTSECTION[0].title} addToCart={addToCart} />
       <Contact />
     </Container>
   );

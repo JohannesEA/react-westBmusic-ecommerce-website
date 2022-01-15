@@ -4,8 +4,13 @@ import "slick-carousel/slick/slick-theme.css";
 import { BEATS } from "../../dummydata/dummy";
 import getWindowDimensions from "../../common/Dimentions";
 import ProductBox from "../../components/contentBoxes/ProductBox";
+import { CartItemType } from "../../App";
 
-const ItemCarouselle = () => {
+type Props = {
+  addToCart: (clickedItem: CartItemType) => void;
+};
+
+const ItemCarouselle: React.FC<Props> = ({ addToCart }) => {
   const { width } = getWindowDimensions();
 
   const showSlides = () => {
@@ -37,7 +42,11 @@ const ItemCarouselle = () => {
     >
       <Slider {...settings}>
         {BEATS.map((beat) => (
-          <ProductBox key={beat.title} item={beat} />
+          <ProductBox
+            key={beat.title}
+            clickedItem={beat}
+            addToCart={addToCart}
+          />
         ))}
       </Slider>
     </div>

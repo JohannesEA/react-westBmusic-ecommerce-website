@@ -2,10 +2,13 @@ import { Wrapper, ProductListContainer } from "./ProductList.styles";
 import { BEATS } from "../../../dummydata/dummy";
 import ProductBox from "../../../components/contentBoxes/ProductBox";
 import { Headline } from "../../../style/text";
+import { CartItemType } from "../../../App";
 
-type Props = {};
+type Props = {
+  addToCart: (clickedItem: CartItemType) => void;
+};
 
-const ProductList = () => {
+const ProductList: React.FC<Props> = ({ addToCart }) => {
   // const beats = BEATS as const;
 
   return (
@@ -13,7 +16,7 @@ const ProductList = () => {
       <Headline>Beats</Headline>
       <ProductListContainer>
         {BEATS.map((beat) => (
-          <ProductBox key={beat.id} item={beat} />
+          <ProductBox key={beat.id} clickedItem={beat} addToCart={addToCart} />
         ))}
       </ProductListContainer>
     </Wrapper>

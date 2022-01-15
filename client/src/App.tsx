@@ -50,15 +50,33 @@ function App() {
   );
   const getTotalItems = (items?: CartItemType[]) => null;
 
-  // const handleRemoveFromCart = (item: CartItemType) => {
-  //   var index = cartItems.indexOf(item);
-  //   if (index !== -1) {
-  //     cartItems.splice(index, 1);
-  //     setCartItems(cartItems);
-  //   }
-  // };
+  const handleRemoveFromCart = (item: CartItemType) => {
+    var index = cartItems.indexOf(item);
+    if (index !== -1) {
+      alert(`Produktet ${item.title} er fjernet fra handlekurven`);
+      cartItems.splice(index, 1);
+      setCartItems(cartItems);
+    }
+  };
 
-  const handleRemoveFromCart = (item: CartItemType) => null;
+  const handleAddToCart = (clickedItem: CartItemType) => {
+    setCartItems((prev) => {
+      //1. Is the item already added in the cart?
+      const isItemInCart = prev.find((item) => item.id === clickedItem.id);
+      if (isItemInCart) {
+        alert("Product er allerede i handlekurven..");
+        return prev.map((item) =>
+          item.id === clickedItem.id ? { ...item } : item
+        );
+      }
+      //2. First time the item is added
+      alert(`Productet ${clickedItem.title} er lagt til i handlekurven.`);
+
+      return [...prev, { ...clickedItem, amount: 1 }];
+    });
+  };
+
+  // const handleRemoveFromCart = (item: CartItemType) => null;
 
   if (isLoading) return <LoadingPage />;
 
@@ -77,8 +95,11 @@ function App() {
       <GlobalStyles />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
+        <Route path="/" element={<Home addToCart={handleAddToCart} />} />
+        <Route
+          path="/products"
+          element={<Products addToCart={handleAddToCart} />}
+        />
         <Route path="/products/:id" element={<Product />} />
         <Route path="/confirm" element={<Confirm />} />
         <Route path="/login" element={<Login />} />
