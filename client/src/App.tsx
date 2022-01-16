@@ -100,7 +100,10 @@ function App() {
           path="/products"
           element={<Products addToCart={handleAddToCart} />}
         />
-        <Route path="/products/:id" element={<Product />} />
+        <Route
+          path="/products/:id"
+          element={<Product addToCart={handleAddToCart} />}
+        />
         <Route path="/confirm" element={<Confirm />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<AdminHome />} />

@@ -1,3 +1,9 @@
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+//Components
+import SecondNavbar from "../../components/navbar/SecondNavbar";
+
+//Styles
 import {
   Wrapper,
   ProductContainer,
@@ -6,28 +12,54 @@ import {
   Image,
   Buttons,
 } from "./Product.styles";
-import { BEATS } from "../../dummydata/dummy";
 import { Headline, Text } from "../../style/text";
-import { StyledButtonSix, StyledButtonFour } from "../../style/buttons";
-import SecondNavbar from "../../components/navbar/SecondNavbar";
-import { CartItemType } from "../../App";
-import React from "react";
 import { BsCartPlus } from "react-icons/bs";
-import { AiFillPlayCircle, AiOutlinePlayCircle } from "react-icons/ai";
+import { AiOutlinePlayCircle, AiOutlinePauseCircle } from "react-icons/ai";
+//Types
+import { CartItemType } from "../../App";
+import { BEATS } from "../../dummydata/dummy";
 
-// type Props = {
-//   item: CartItemType[];
-// };
+type Props = {
+  addToCart: (clickedItem: CartItemType) => void;
+};
 
-const ProductList = () => {
-  const item = BEATS[0];
+const audioUrl = new Audio("/assets/sounds/panda.mp3");
+
+const Product: React.FC<Props> = ({ addToCart }) => {
+  const [playing, setPlaying] = useState(false);
+  const [item, setItem] = useState({} as CartItemType);
+  const location = useLocation();
+  const id: number = +location.pathname.split("/")[2];
+
+  const handlePlaySong = (url: string) => {
+    if (playing) {
+      setPlaying(false);
+      audioUrl.pause();
+    } else {
+      setPlaying(true);
+      audioUrl.play();
+    }
+  };
+
+  useEffect(() => {
+    const getProduct = () => {
+      try {
+        const res = BEATS.filter((x) => x.id === id);
+        setItem(res[0]);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getProduct();
+  }, [id, item]);
+
   return (
     <Wrapper id="hero">
       <SecondNavbar />
       <Headline>{item.title}</Headline>
       <ProductContainer>
         <ImageContainer>
-          <Image src={item.image} alt={item.image} />
+          <Image src={item.image} alt={item.title} />
         </ImageContainer>
 
         <ProductDescription>
@@ -43,13 +75,26 @@ const ProductList = () => {
         </ProductDescription>
 
         <Buttons>
-          <AiOutlinePlayCircle fontSize={50} />
-
-          <BsCartPlus fontSize={50} />
+          {!playing ? (
+            <AiOutlinePlayCircle
+              fontSize={50}
+              onClick={() => {
+                handlePlaySong("panda.mp3");
+              }}
+            />
+          ) : (
+            <AiOutlinePauseCircle
+              fontSize={50}
+              onClick={() => {
+                handlePlaySong("panda.mp3");
+              }}
+            />
+          )}
+          <BsCartPlus fontSize={50} onClick={() => addToCart(item)} />
         </Buttons>
       </ProductContainer>
     </Wrapper>
   );
 };
 
-export default ProductList;
+export default Product;
