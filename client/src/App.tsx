@@ -1,3 +1,4 @@
+//Functions
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import {
@@ -6,6 +7,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
+// import { getProducts } from "./apihandling/apiCalls";
 
 //Components
 import Home from "./pages/home/Home";
