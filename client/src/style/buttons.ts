@@ -146,6 +146,9 @@ export const StyledButtonSix = styled(IconButton)`
 `;
 
 export const CartButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 30px;
   height: 30px;
   z-index: 101;

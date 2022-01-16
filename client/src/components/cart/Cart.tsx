@@ -7,7 +7,8 @@ import CartItem from "./CartItem";
 import { CartItemType } from "../../App";
 
 //Styles
-import { Wrapper } from "./Cart.styles";
+import { Wrapper, Buttons } from "./Cart.styles";
+import { StyledButtonSix, StyledButtonFour } from "../../style/buttons";
 
 //Dummydata
 import { BEATS } from "../../dummydata/dummy";
@@ -18,7 +19,14 @@ type Props = {
 };
 
 const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
-  const calculateTotal = (items: CartItemType[]) => null;
+  const calculateTotal = (items: CartItemType[]) => {
+    var price = 0;
+    for (var i = 0; i < items.length; i++) {
+      price += items[i].price;
+    }
+
+    return price;
+  };
 
   return (
     <Wrapper>
@@ -31,7 +39,12 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
           removeFromCart={() => removeFromCart(item)}
         />
       ))}
-      <h2>Total pris: {calculateTotal(cartItems)} ,-</h2>
+      <h2>Total pris: {calculateTotal(cartItems)} NOK</h2>
+
+      <Buttons>
+        <StyledButtonFour>Sjekk ut</StyledButtonFour>
+        <StyledButtonFour>Vipps</StyledButtonFour>
+      </Buttons>
     </Wrapper>
   );
 };

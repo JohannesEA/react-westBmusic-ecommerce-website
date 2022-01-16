@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 
 //Styles
 import { Wrapper } from "./CartItems.styles";
+import { AiOutlineDelete } from "react-icons/ai";
 
 type Props = {
   item: CartItemType;
@@ -19,7 +20,6 @@ const CartItem: React.FC<Props> = ({ item, removeFromCart }) => {
         <h3>{item.title}</h3>
         <div className="informations">
           <p>Price: ${item.price}</p>
-          <p>Total: ${item.price.toFixed(2)}</p>
         </div>
 
         <div className="buttons">
@@ -29,7 +29,7 @@ const CartItem: React.FC<Props> = ({ item, removeFromCart }) => {
             variant="contained"
             onClick={() => removeFromCart(item)}
           >
-            -
+            <AiOutlineDelete fontSize={20} />
           </Button>
         </div>
       </div>

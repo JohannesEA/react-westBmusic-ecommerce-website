@@ -23,7 +23,7 @@ import LoadingPage from "./components/loading/LoadingPage";
 //styles
 import { CartButton, DeleteButton } from "./style/buttons";
 import { useQuery } from "react-query";
-import { BsCartPlus } from "react-icons/bs";
+import { BsCart } from "react-icons/bs";
 import Login from "./pages/login/Login";
 import AdminHome from "./pages/admin/AdminHome";
 
@@ -48,7 +48,7 @@ function App() {
     "products",
     getProducts
   );
-  const getTotalItems = (items?: CartItemType[]) => null;
+  const getTotalItems = () => cartItems.length;
 
   const handleRemoveFromCart = (item: CartItemType) => {
     var index = cartItems.indexOf(item);
@@ -89,7 +89,7 @@ function App() {
 
       <CartButton className="kc_fab_main_btn" onClick={() => setCartOpen(true)}>
         <Badge badgeContent={getTotalItems()} color="error">
-          <BsCartPlus fontSize="20px" />
+          <BsCart fontSize="20px" />
         </Badge>
       </CartButton>
       <GlobalStyles />
