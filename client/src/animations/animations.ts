@@ -109,7 +109,7 @@ export const Circle = styled.div`
   border-radius: 100%;
   width: 1em;
   height: 1em;
-  background-color: white;
+  background-color: var(--color-1);
   animation: ${boxShadowAnimation} 2s linear infinite,
     ${rotate} 2s linear infinite;
 `;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import {
   BrowserRouter as Router,
@@ -48,6 +48,10 @@ function App() {
     "products",
     getProducts
   );
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem("isAuthenticated")
+  );
+
   const getTotalItems = () => cartItems.length;
 
   const handleRemoveFromCart = (item: CartItemType) => {
@@ -76,9 +80,26 @@ function App() {
     });
   };
 
-  // const handleRemoveFromCart = (item: CartItemType) => null;
+  useEffect(() => {
+    const set = () => {
+      setIsAuthenticated(localStorage.getItem("isAuthenticated"));
+    };
+    set();
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    let timer1 = setTimeout(
+      () => localStorage.setItem("isAuthenticated", "false"),
+      1800000
+    );
+    return () => {
+      clearTimeout(timer1);
+    };
+  }, []);
 
   if (isLoading) return <LoadingPage />;
+
+  console.log("User logged in: ", isAuthenticated);
 
   return (
     <Router>
@@ -106,7 +127,16 @@ function App() {
         />
         <Route path="/confirm" element={<Confirm />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/admin" element={<AdminHome />} />
+        <Route
+          path="/admin"
+          element={
+            isAuthenticated === "true" ? (
+              <AdminHome />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
 
         <Route path="/error" element={<Error />} />
         <Route path="*" element={<Error />} />
