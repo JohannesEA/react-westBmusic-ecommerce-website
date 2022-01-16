@@ -1,22 +1,39 @@
-import { Wrapper, ProductListContainer } from "./ProductList.styles";
-import { BEATS } from "../../../dummydata/dummy";
+//Components
 import ProductBox from "../../../components/contentBoxes/ProductBox";
+
+//Styles
+import { Wrapper, ProductListContainer } from "./ProductList.styles";
 import { Headline } from "../../../style/text";
+
+//types
 import { CartItemType } from "../../../App";
+
+import { useQuery } from "react-query";
 
 type Props = {
   addToCart: (clickedItem: CartItemType) => void;
 };
 
+//Call api
+const getProducts = async (): Promise<CartItemType[]> =>
+  await (await fetch("https://westbmusic.herokuapp.com/api/products")).json();
+
 const ProductList: React.FC<Props> = ({ addToCart }) => {
-  // const beats = BEATS as const;
+  const { data, isLoading, error } = useQuery<CartItemType[]>(
+    "products",
+    getProducts
+  );
 
   return (
     <Wrapper id="hero">
       <Headline>Beats</Headline>
       <ProductListContainer>
-        {BEATS.map((beat) => (
-          <ProductBox key={beat.id} clickedItem={beat} addToCart={addToCart} />
+        {data?.map((beat) => (
+          <ProductBox
+            key={beat.title}
+            clickedItem={beat}
+            addToCart={addToCart}
+          />
         ))}
       </ProductListContainer>
     </Wrapper>

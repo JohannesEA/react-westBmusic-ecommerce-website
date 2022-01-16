@@ -8,10 +8,7 @@ import { CartItemType } from "../../App";
 
 //Styles
 import { Wrapper, Buttons } from "./Cart.styles";
-import { StyledButtonSix, StyledButtonFour } from "../../style/buttons";
-
-//Dummydata
-import { BEATS } from "../../dummydata/dummy";
+import { StyledButtonFour } from "../../style/buttons";
 
 type Props = {
   cartItems: CartItemType[];
@@ -34,7 +31,7 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
       {cartItems.length === 0 ? <p>Ingen produkter i handlekurven</p> : null}
       {cartItems.map((item) => (
         <CartItem
-          key={item.id}
+          key={item._id}
           item={item}
           removeFromCart={() => removeFromCart(item)}
         />

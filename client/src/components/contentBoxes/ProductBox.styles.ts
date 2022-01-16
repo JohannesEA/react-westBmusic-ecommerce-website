@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import { boxShadowAnimation } from "../../animations/animations";
 
 export const Wrapper = styled.div`
   max-height: 40em;
-  height: 30em;
+  height: auto;
+  padding-bottom: 1em;
   max-width: 25em;
   width: 25em;
   transition: all 0.3s ease;

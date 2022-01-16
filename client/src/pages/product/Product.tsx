@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 //Components
 import SecondNavbar from "../../components/navbar/SecondNavbar";
@@ -17,61 +17,63 @@ import { BsCartPlus } from "react-icons/bs";
 import { AiOutlinePlayCircle, AiOutlinePauseCircle } from "react-icons/ai";
 //Types
 import { CartItemType } from "../../App";
-import { BEATS } from "../../dummydata/dummy";
+import { useQuery } from "react-query";
 
 type Props = {
   addToCart: (clickedItem: CartItemType) => void;
 };
 
-const audioUrl = new Audio("/assets/sounds/panda.mp3");
-
 const Product: React.FC<Props> = ({ addToCart }) => {
   const [playing, setPlaying] = useState(false);
   const [item, setItem] = useState({} as CartItemType);
   const location = useLocation();
-  const id: number = +location.pathname.split("/")[2];
+  const id = location.pathname.split("/")[2];
+  const getProduct = async (): Promise<CartItemType> =>
+    await (
+      await fetch("https://westbmusic.herokuapp.com/api/products/find/" + id)
+    ).json();
+  const { data, isLoading, error } = useQuery<CartItemType>(
+    "product",
+    getProduct
+  );
 
-  const handlePlaySong = (url: string) => {
+  const audioPlayer = useRef<HTMLAudioElement>(null);
+
+  const handlePlaySong = () => {
     if (playing) {
-      setPlaying(false);
-      audioUrl.pause();
+      if (audioPlayer.current) {
+        setPlaying(false);
+        audioPlayer.current.pause();
+      }
     } else {
-      setPlaying(true);
-      audioUrl.play();
+      if (audioPlayer.current) {
+        setPlaying(true);
+        audioPlayer.current.play();
+      }
     }
   };
-
-  useEffect(() => {
-    const getProduct = () => {
-      try {
-        const res = BEATS.filter((x) => x.id === id);
-        setItem(res[0]);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    getProduct();
-  }, [id, item]);
 
   return (
     <Wrapper id="hero">
       <SecondNavbar />
-      <Headline>{item.title}</Headline>
+      <audio ref={audioPlayer} src={data?.mp3} preload="metadata"></audio>
+
+      <Headline>{data?.title}</Headline>
       <ProductContainer>
         <ImageContainer>
-          <Image src={item.image} alt={item.title} />
+          <Image src={data?.image} alt={data?.title} />
         </ImageContainer>
 
         <ProductDescription>
-          <Text>Beskrivelse: {item.description}</Text>
+          <Text>Beskrivelse: {data?.description}</Text>
         </ProductDescription>
 
         <ProductDescription>
-          <Text>Kategori: {item.category}</Text>
+          <Text>Kategori(er): {data?.categories.toString().split(" ", 2)}</Text>
         </ProductDescription>
 
         <ProductDescription>
-          <Text>Pris: {item.price}</Text>
+          <Text>Pris: {data?.price},- NOK</Text>
         </ProductDescription>
 
         <Buttons>
@@ -79,14 +81,14 @@ const Product: React.FC<Props> = ({ addToCart }) => {
             <AiOutlinePlayCircle
               fontSize={50}
               onClick={() => {
-                handlePlaySong("panda.mp3");
+                handlePlaySong();
               }}
             />
           ) : (
             <AiOutlinePauseCircle
               fontSize={50}
               onClick={() => {
-                handlePlaySong("panda.mp3");
+                handlePlaySong();
               }}
             />
           )}

@@ -1,10 +1,16 @@
+//Components
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { BEATS } from "../../dummydata/dummy";
 import getWindowDimensions from "../../common/Dimentions";
 import ProductBox from "../../components/contentBoxes/ProductBox";
+//Styles
 import { CartItemType } from "../../App";
+import { useQuery } from "react-query";
+
+//Call api
+const getProducts = async (): Promise<CartItemType[]> =>
+  await (await fetch("https://westbmusic.herokuapp.com/api/products")).json();
 
 type Props = {
   addToCart: (clickedItem: CartItemType) => void;
@@ -12,6 +18,10 @@ type Props = {
 
 const ItemCarouselle: React.FC<Props> = ({ addToCart }) => {
   const { width } = getWindowDimensions();
+  const { data, isLoading, error } = useQuery<CartItemType[]>(
+    "products",
+    getProducts
+  );
 
   const showSlides = () => {
     if (width > 2500) {
@@ -41,7 +51,7 @@ const ItemCarouselle: React.FC<Props> = ({ addToCart }) => {
       style={{ minHeight: "30em", padding: " 0 1em 3em 1em", color: "white" }}
     >
       <Slider {...settings}>
-        {BEATS.map((beat) => (
+        {data?.map((beat) => (
           <ProductBox
             key={beat.title}
             clickedItem={beat}

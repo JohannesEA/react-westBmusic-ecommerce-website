@@ -28,13 +28,13 @@ import Login from "./pages/login/Login";
 import AdminHome from "./pages/admin/AdminHome";
 
 export type CartItemType = {
-  id: number;
+  _id: number;
   title: string;
   image: string;
   price: number;
   mp3: string;
   description: string;
-  category: string;
+  categories: Array<string>;
 };
 
 //Call api
@@ -62,11 +62,11 @@ function App() {
   const handleAddToCart = (clickedItem: CartItemType) => {
     setCartItems((prev) => {
       //1. Is the item already added in the cart?
-      const isItemInCart = prev.find((item) => item.id === clickedItem.id);
+      const isItemInCart = prev.find((item) => item._id === clickedItem._id);
       if (isItemInCart) {
         alert("Product er allerede i handlekurven..");
         return prev.map((item) =>
-          item.id === clickedItem.id ? { ...item } : item
+          item._id === clickedItem._id ? { ...item } : item
         );
       }
       //2. First time the item is added

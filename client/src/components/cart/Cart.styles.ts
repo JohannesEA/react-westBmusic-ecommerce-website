@@ -23,7 +23,7 @@ export const Buttons = styled.div`
   display: flex;
   justify-content: space-between;
 
-  @media (max-width: 800px) {
+  @media (max-width: 250px) {
     flex-direction: column;
   }
 `;

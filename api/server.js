@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const productRoute = require("./routes/product");
+const authRoute = require("./routes/auth");
+const userRoute = require("./routes/user");
+const contentRoute = require("./routes/content");
+const stripeRoute = require("./routes/stripe");
 
 // const path = require('path');
 //ndjsvnjsavdmjkasdvn1e3eu127
@@ -18,18 +22,15 @@ mongoose
 
 app.use(cors());
 app.use(express.json());
+app.use("/api/auth", authRoute);
+app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
-
-// Have Node serve the files for our built React app
-// app.use(express.static(path.join(__dirname, "./client/build")));
+app.use("/api/contents", contentRoute);
+app.use("/api/checkout", stripeRoute);
 
 app.get("/", (req, res) => {
   res.send("Server is running..");
 });
-
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, './client/build'));
-// });
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("Server is running..");

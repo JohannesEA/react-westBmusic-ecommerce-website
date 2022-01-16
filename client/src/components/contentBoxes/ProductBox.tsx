@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import getWindowDimensions from "../../common/Dimentions";
 import { Wrapper, ImageContainer, Image, Buttons } from "./ProductBox.styles";
 import { Text, SmallText } from "../../style/text";
@@ -10,7 +10,7 @@ import {
 import { CartItemType } from "../../App";
 import { useNavigate } from "react-router-dom";
 import { BsCartPlus } from "react-icons/bs";
-import { AudioPlay } from "./AudioPlay";
+import { PlayMusicAnimation, Circle } from "../../animations/animations";
 
 type Props = {
   clickedItem: CartItemType;
@@ -18,41 +18,48 @@ type Props = {
   // removeFromCart: (id: number) => void;
 };
 
-const audioUrl = new Audio("/assets/sounds/panda.mp3");
-
 const ProductBox: React.FC<Props> = ({ clickedItem, addToCart }) => {
-  const { width } = getWindowDimensions();
-  const [cartItems, setCartItems] = useState([] as CartItemType[]);
   const [playing, setPlaying] = useState(false);
   let path = "";
   const navigate = useNavigate();
+  const [isActive, setIsActive] = useState(false);
 
   const handleNavigateToProductInfo = (item: CartItemType) => {
-    path = "/products/" + item.id;
+    path = "/products/" + item._id;
     navigate(path);
   };
 
-  const handlePlaySong = (url: string) => {
+  const audioPlayer = useRef<HTMLAudioElement>(null);
+
+  const handlePlaySong = () => {
     if (playing) {
-      setPlaying(false);
-      audioUrl.pause();
+      if (audioPlayer.current) {
+        setPlaying(false);
+        setIsActive(false);
+        audioPlayer.current.pause();
+      }
     } else {
-      setPlaying(true);
-      audioUrl.play();
+      if (audioPlayer.current) {
+        setPlaying(true);
+        setIsActive(true);
+        audioPlayer.current.play();
+      }
     }
   };
 
   return (
     <Wrapper>
       <ImageContainer>
-        <Image src={clickedItem.image} alt={clickedItem.title} />
+        <Image src={clickedItem.image} alt={clickedItem.title + "-bilde"} />
       </ImageContainer>
 
-      <Text>{clickedItem.description}</Text>
+      <audio ref={audioPlayer} src={clickedItem.mp3} preload="metadata"></audio>
 
-      <Text>[{clickedItem.category}]</Text>
+      <Text>{clickedItem.title}</Text>
 
-      <SmallText>Pris: {clickedItem.price}</SmallText>
+      <Text>[{clickedItem.categories.toString().split(" ", 2)}]</Text>
+
+      <SmallText>Pris: {clickedItem.price} NOK</SmallText>
       <br />
 
       <Buttons>
@@ -65,20 +72,26 @@ const ProductBox: React.FC<Props> = ({ clickedItem, addToCart }) => {
           <AiOutlinePlayCircle
             fontSize={35}
             onClick={() => {
-              handlePlaySong("panda.mp3");
+              handlePlaySong();
             }}
           />
         ) : (
           <AiOutlinePauseCircle
             fontSize={35}
             onClick={() => {
-              handlePlaySong("panda.mp3");
+              handlePlaySong();
             }}
           />
         )}
 
         <BsCartPlus onClick={() => addToCart(clickedItem)} fontSize={35} />
       </Buttons>
+
+      {playing && (
+        <PlayMusicAnimation>
+          <Circle />
+        </PlayMusicAnimation>
+      )}
     </Wrapper>
   );
 };
