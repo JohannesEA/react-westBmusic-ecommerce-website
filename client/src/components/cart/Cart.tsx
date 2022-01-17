@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import StripeCheckout, { Token } from "react-stripe-checkout";
+import { publicRequest } from "../../requestMethods";
 
 //Components
 import CartItem from "./CartItem";
@@ -41,13 +42,10 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await axios.post(
-          "https://westbmusic.herokuapp.com/api/checkout/payment",
-          {
-            tokenId: stripeToken.id,
-            amount: calculateTotal(cartItems),
-          }
-        );
+        const res = await publicRequest.post("/checkout/payment", {
+          tokenId: stripeToken.id,
+          amount: calculateTotal(cartItems),
+        });
         console.log(res.data);
       } catch (err) {
         console.log(err);

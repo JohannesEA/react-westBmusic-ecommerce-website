@@ -31,9 +31,8 @@ function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([] as Product[]);
   const [isLoading, setIsLoading] = useState(true);
-  const [products, setProducts] = useState([] as Product[]);
-  getProducts().then((products) => {
-    setProducts(products as Product[]);
+  getProducts().then(() => {
+    console.log("Products is loaded in");
     setIsLoading(false);
   });
 
