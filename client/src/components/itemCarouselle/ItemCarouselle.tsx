@@ -1,3 +1,7 @@
+//Functions
+import { getProducts } from "../../apihandling/apiCalls";
+import { useState } from "react";
+
 //Components
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -9,8 +13,8 @@ import { Product } from "../../models/Product";
 import { useQuery } from "react-query";
 
 //Call api
-const getProducts = async (): Promise<Product[]> =>
-  await (await fetch("http://localhost:5000/api/products")).json();
+// const getProducts = async (): Promise<Product[]> =>
+//   await (await fetch("http://localhost:5000/api/products")).json();
 
 type Props = {
   addToCart: (clickedItem: Product) => void;
@@ -18,10 +22,10 @@ type Props = {
 
 const ItemCarouselle: React.FC<Props> = ({ addToCart }) => {
   const { width } = getWindowDimensions();
-  const { data, isLoading, error } = useQuery<Product[]>(
-    "products",
-    getProducts
-  );
+  const [products, setProducts] = useState([] as Product[]);
+  getProducts().then((products) => {
+    setProducts(products as Product[]);
+  });
 
   const showSlides = () => {
     if (width > 2500) {
@@ -51,7 +55,7 @@ const ItemCarouselle: React.FC<Props> = ({ addToCart }) => {
       style={{ minHeight: "30em", padding: " 0 1em 3em 1em", color: "white" }}
     >
       <Slider {...settings}>
-        {data?.map((beat) => (
+        {products?.map((beat) => (
           <ProductBox
             key={beat.title}
             clickedItem={beat}
