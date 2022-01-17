@@ -128,7 +128,12 @@ function App() {
           element={<Product addToCart={handleAddToCart} />}
         />
         <Route path="/confirm" element={<Confirm />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={
+            isAuthenticated === "false" ? <Login /> : <Navigate to="/admin" />
+          }
+        />
         <Route
           path="/admin"
           element={

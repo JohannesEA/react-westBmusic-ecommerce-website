@@ -11,7 +11,7 @@ export const login = async (user: User) => {
     console.log("Login Result: ", res);
     localStorage.setItem("isAuthenticated", "true");
     localStorage.setItem("accessToken", res.data.accessToken);
-    window.location.href = "https://westbmusic.netlify.app/admin";
+    window.location.reload();
   } catch (err) {
     console.log("Login Failed!", err);
   }
