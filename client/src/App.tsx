@@ -27,7 +27,7 @@ import { Product } from "./models/Product";
 function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([] as Product[]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [isAuthenticated, setIsAuthenticated] = useState(
     localStorage.getItem("isAuthenticated")
@@ -61,26 +61,25 @@ function App() {
     });
   };
 
-  useEffect(() => {
-    const set = () => {
-      setIsAuthenticated(localStorage.getItem("isAuthenticated"));
-    };
-    set();
-  }, [isAuthenticated]);
+  // useEffect(() => {
+  //   const set = () => {
+  //     setIsAuthenticated(localStorage.getItem("isAuthenticated"));
+  //   };
+  //   set();
+  // }, [isAuthenticated]);
 
-  useEffect(() => {
-    setTimeout(() => setIsLoading(false), 1500);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => setIsLoading(false), 1500);
+  // }, []);
 
-  useEffect(() => {
-    let timer1 = setTimeout(
-      () => localStorage.setItem("isAuthenticated", "false"),
-      1800000
-    );
-    return () => {
-      clearTimeout(timer1);
-    };
-  }, []);
+  // useEffect(() => {
+  //   let timer1 = setTimeout(
+  //     () => localStorage.setItem("isAuthenticated", "false"),
+  //     1800000
+  //   );
+
+  //   clearTimeout(timer1);
+  // }, []);
 
   if (isLoading) return <LoadingPage />;
 

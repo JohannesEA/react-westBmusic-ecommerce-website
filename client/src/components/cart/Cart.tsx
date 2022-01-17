@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import StripeCheckout, { Token } from "react-stripe-checkout";
-import { publicRequest } from "../../requestMethods";
+// import StripeCheckout, { Token } from "react-stripe-checkout";
+// import { publicRequest } from "../../requestMethods";
 
 //Components
 import CartItem from "./CartItem";
@@ -17,15 +17,15 @@ type Props = {
   removeFromCart: (item: Product) => void;
 };
 
-const KEY =
-  "pk_test_51JwS4BDJ6KD8X4jUYGm2VeyofI9YOdonXbCHy3GB12JGM3gPHdY7l3qi9cd7fAvMsTtmiZdu0sjZWy20SxAghpui007JvXEC6j";
+// const KEY =
+//   "pk_test_51JwS4BDJ6KD8X4jUYGm2VeyofI9YOdonXbCHy3GB12JGM3gPHdY7l3qi9cd7fAvMsTtmiZdu0sjZWy20SxAghpui007JvXEC6j";
 
 const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
-  const [stripeToken, setStripeToken] = useState({} as Token);
+  // const [stripeToken, setStripeToken] = useState({} as Token);
 
-  const onToken = (token: Token) => {
-    setStripeToken(token);
-  };
+  // const onToken = (token: Token) => {
+  //   setStripeToken(token);
+  // };
 
   const calculateTotal = (items: Product[]) => {
     var price = 0;
@@ -67,7 +67,7 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
       <h2>Total pris: {calculateTotal(cartItems)} NOK</h2>
 
       <Buttons>
-        <StripeCheckout
+        {/* <StripeCheckout
           name="WestBMusic"
           image="/assets/logos/logo1.png"
           billingAddress
@@ -76,10 +76,9 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
           amount={2000}
           token={onToken}
           stripeKey={KEY}
-        >
-          {" "}
-          <StyledButtonFour>Sjekk ut</StyledButtonFour>
-        </StripeCheckout>
+        > */}{" "}
+        <StyledButtonFour>Sjekk ut</StyledButtonFour>
+        {/* </StripeCheckout> */}
         <StyledButtonFour>Vipps</StyledButtonFour>
       </Buttons>
     </Wrapper>
