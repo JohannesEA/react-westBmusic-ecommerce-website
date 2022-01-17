@@ -1,5 +1,5 @@
 import { Wrapper } from "./Hero.styles";
-import { StyledButtonThree } from "../../../style/buttons";
+import { StyledTransparentButton } from "../../../style/buttons";
 import { Link as DomLink } from "react-router-dom";
 
 type Props = {
@@ -12,8 +12,8 @@ const Hero: React.FC<Props> = ({ title, undertitle, image }) => {
   return (
     <Wrapper id="hero">
       <div className="hero-right">
-        <DomLink to="/products">
-          <StyledButtonThree>Beats</StyledButtonThree>
+        <DomLink to="/products" style={{ width: "100%" }}>
+          <StyledTransparentButton>Beats</StyledTransparentButton>
         </DomLink>
       </div>
     </Wrapper>

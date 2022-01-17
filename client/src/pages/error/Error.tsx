@@ -1,7 +1,7 @@
 import SecondNavbar from "../../components/navbar/SecondNavbar";
 import { Wrapper } from "./Error.styles";
 import { Headline, UnderText } from "../../style/text";
-import { StyledButtonSix } from "../../style/buttons";
+import { StyledBlueButton } from "../../style/buttons";
 import { Link as DomLink } from "react-router-dom";
 
 const Error = () => {
@@ -13,7 +13,7 @@ const Error = () => {
         <UnderText>Det har skjedd en feil</UnderText>
         <div>
           <DomLink to="/">
-            <StyledButtonSix>Tilbake Til Trygghet!</StyledButtonSix>
+            <StyledBlueButton>Tilbake Til Trygghet!</StyledBlueButton>
           </DomLink>
         </div>
       </div>

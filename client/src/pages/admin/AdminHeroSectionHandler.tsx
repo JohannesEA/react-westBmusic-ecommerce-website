@@ -8,7 +8,7 @@ import {
   FileInputContainer,
 } from "../../style/forms";
 import { Headline, UnderText, SmallText } from "../../style/text";
-import { StyledButtonFive } from "../../style/buttons";
+import { StyledBlueButton } from "../../style/buttons";
 
 const AdminHeroSectionHandler = () => {
   const [errorState, setErrorState] = useState({ isError: false, message: "" });
@@ -31,7 +31,7 @@ const AdminHeroSectionHandler = () => {
           <FileInput id="file" name="heroImage"></FileInput>
         </FileInputContainer>
 
-        <StyledButtonFive
+        <StyledBlueButton
           onClick={() =>
             setErrorState({
               isError: true,
@@ -40,7 +40,7 @@ const AdminHeroSectionHandler = () => {
           }
         >
           Send
-        </StyledButtonFive>
+        </StyledBlueButton>
 
         {errorState.isError && (
           <ErrorMessage>{errorState.message}</ErrorMessage>

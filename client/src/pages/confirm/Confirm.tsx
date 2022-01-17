@@ -1,7 +1,7 @@
 import SecondNavbar from "../../components/navbar/SecondNavbar";
 import { Wrapper } from "./Confirm.styles";
 import { Headline, UnderText } from "../../style/text";
-import { StyledButtonSix } from "../../style/buttons";
+import { StyledBlueButton } from "../../style/buttons";
 import { Link as DomLink } from "react-router-dom";
 
 const Confirm = () => {
@@ -14,7 +14,7 @@ const Confirm = () => {
         <div>
           {" "}
           <DomLink to="/">
-            <StyledButtonSix>Tilbake Til Hovedsiden</StyledButtonSix>
+            <StyledBlueButton>Tilbake Til Hovedsiden</StyledBlueButton>
           </DomLink>
         </div>
       </div>

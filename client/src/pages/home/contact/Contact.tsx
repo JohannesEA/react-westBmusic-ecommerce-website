@@ -17,7 +17,7 @@ import {
   ErrorMessage,
 } from "../../../style/forms";
 
-import { StyledButtonFive } from "../../../style/buttons";
+import { StyledBlueButton } from "../../../style/buttons";
 const Contact = () => {
   const [messageState, setMessageState] = useState({
     isError: false,
@@ -51,13 +51,13 @@ const Contact = () => {
         <Input placeholder="Bestilling av beat" />
         <Label>Melding</Label>
         <TextArea placeholder="Hei! Jeg ønsker å bestille en beat.." />
-        <StyledButtonFive
+        <StyledBlueButton
           onClick={() =>
             setMessageState({ isError: true, message: "Feil i en av feltene" })
           }
         >
           Send
-        </StyledButtonFive>
+        </StyledBlueButton>
 
         {messageState.isError && (
           <ErrorMessage>{messageState.message}</ErrorMessage>

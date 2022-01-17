@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Buttons } from "./AdminProductsHandler.styles";
 import { Headline, UnderText } from "../../../style/text";
-import { StyledButtonFive } from "../../../style/buttons";
+import { StyledBlueButton } from "../../../style/buttons";
 import { Wrapper } from "../../../style/forms";
 import CreateProduct from "./CreateProduct";
 import EditProduct from "./EditProduct";
@@ -25,21 +25,21 @@ const AdminProductsHandler = () => {
       <Headline>Produkt</Headline>
       <UnderText>Last opp, endre eller slett ett produkt</UnderText>
       <Buttons>
-        <StyledButtonFive
+        <StyledBlueButton
           onClick={() => setState({ create: true, edit: false, delete: false })}
         >
           Lag
-        </StyledButtonFive>
-        <StyledButtonFive
+        </StyledBlueButton>
+        <StyledBlueButton
           onClick={() => setState({ create: false, edit: true, delete: false })}
         >
           Endre
-        </StyledButtonFive>
-        <StyledButtonFive
+        </StyledBlueButton>
+        <StyledBlueButton
           onClick={() => setState({ create: false, edit: false, delete: true })}
         >
           Slett
-        </StyledButtonFive>
+        </StyledBlueButton>
       </Buttons>
       {state.create && <CreateProduct />}
       {state.edit && <EditProduct />}

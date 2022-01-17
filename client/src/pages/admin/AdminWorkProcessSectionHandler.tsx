@@ -9,7 +9,7 @@ import {
   // FileInputContainer,
 } from "../../style/forms";
 import { Headline, UnderText } from "../../style/text";
-import { StyledButtonFive } from "../../style/buttons";
+import { StyledBlueButton } from "../../style/buttons";
 
 const AdminWorkProcessSectionHandler = () => {
   const [errorState, setErrorState] = useState({ isError: false, message: "" });
@@ -52,7 +52,7 @@ const AdminWorkProcessSectionHandler = () => {
           name="workProcessP4"
           placeholder="Tekst for fjerde del av prosessen"
         ></Input>
-        <StyledButtonFive
+        <StyledBlueButton
           onClick={() =>
             setErrorState({
               isError: true,
@@ -61,7 +61,7 @@ const AdminWorkProcessSectionHandler = () => {
           }
         >
           Send
-        </StyledButtonFive>
+        </StyledBlueButton>
         {errorState.isError && (
           <ErrorMessage>{errorState.message}</ErrorMessage>
         )}

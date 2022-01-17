@@ -9,7 +9,7 @@ import {
   Select,
 } from "../../../style/forms";
 import { SmallText } from "../../../style/text";
-import { StyledButtonFive } from "../../../style/buttons";
+import { StyledBlueButton } from "../../../style/buttons";
 import { Product } from "../../../models/Product";
 import { updateProduct } from "../../../apihandling/apiCalls";
 import { getProducts } from "../../../apihandling/apiCalls";
@@ -140,7 +140,7 @@ const EditProduct = () => {
           <SmallText>Last Opp Beat</SmallText>
           <FileInput id="mp3" name="mp3" onChange={handleChange}></FileInput>
         </FileInputContainer>
-        <StyledButtonFive
+        <StyledBlueButton
           onClick={() =>
             setErrorState({
               isError: true,
@@ -149,7 +149,7 @@ const EditProduct = () => {
           }
         >
           Send
-        </StyledButtonFive>
+        </StyledBlueButton>
         {errorState.isError && (
           <ErrorMessage>{errorState.message}</ErrorMessage>
         )}

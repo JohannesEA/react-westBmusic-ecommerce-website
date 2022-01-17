@@ -13,7 +13,7 @@ import {
   FileInputContainer,
 } from "../../../style/forms";
 import { SmallText } from "../../../style/text";
-import { StyledButtonFive } from "../../../style/buttons";
+import { StyledBlueButton } from "../../../style/buttons";
 // import { Product } from "../../../models/Product";
 
 const CreateProduct = () => {
@@ -115,7 +115,7 @@ const CreateProduct = () => {
           <SmallText>Last Opp Beat</SmallText>
           <FileInput id="mp3" name="mp3" onChange={handleChange}></FileInput>
         </FileInputContainer>
-        <StyledButtonFive onClick={handleAddNewProduct}>Send</StyledButtonFive>
+        <StyledBlueButton onClick={handleAddNewProduct}>Send</StyledBlueButton>
         {errorState.isError && (
           <ErrorMessage>{errorState.message}</ErrorMessage>
         )}

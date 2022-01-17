@@ -1,7 +1,8 @@
 import { Wrapper } from "./About.styles";
-import { Headline, UnderText, Text, SmallText } from "../../../style/text";
+import { Headline, UnderText, Text } from "../../../style/text";
 import getWindowDimensions from "../../../common/Dimentions";
-import { StyledButtonTwo } from "../../../style/buttons";
+import { StyledBlueButton } from "../../../style/buttons";
+import { Link } from "react-scroll";
 
 type Props = {
   title: string;
@@ -23,7 +24,15 @@ const About: React.FC<Props> = ({ title, undertitle, image }) => {
           <Text>{undertitle}</Text>
         )}{" "}
         <br></br>
-        <StyledButtonTwo>Kontakt</StyledButtonTwo>
+        <Link
+          to="contact"
+          spy={true}
+          smooth={true}
+          offset={-100}
+          duration={300}
+        >
+          <StyledBlueButton>Kontakt</StyledBlueButton>
+        </Link>
       </div>
 
       {width > 800 && (

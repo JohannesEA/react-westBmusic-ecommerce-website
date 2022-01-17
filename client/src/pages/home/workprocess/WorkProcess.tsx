@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Wrapper, Circle, Center } from "./WorkProcess.styles";
-import { Headline, UnderText, Text, SmallText } from "../../../style/text";
+import { Headline, Text } from "../../../style/text";
 import getWindowDimensions from "../../../common/Dimentions";
-import { StyledButtonOne, StyledButtonTwo } from "../../../style/buttons";
 
 type Props = {
   title: string;

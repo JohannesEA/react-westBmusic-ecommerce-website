@@ -10,7 +10,7 @@ import { Product } from "../../models/Product";
 
 //Styles
 import { Wrapper, Buttons } from "./Cart.styles";
-import { StyledButtonFour } from "../../style/buttons";
+import { StyledBlueButton, StyledOrangeButton } from "../../style/buttons";
 
 type Props = {
   cartItems: Product[];
@@ -78,9 +78,9 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
           stripeKey={KEY}
         >
           {" "}
-          <StyledButtonFour>Sjekk ut</StyledButtonFour>
+          <StyledBlueButton>Sjekk ut</StyledBlueButton>
         </StripeCheckout>
-        <StyledButtonFour>Vipps</StyledButtonFour>
+        <StyledOrangeButton>Vipps</StyledOrangeButton>
       </Buttons>
     </Wrapper>
   );

@@ -1,6 +1,6 @@
 import { useEffect, useState, MouseEvent, ChangeEvent } from "react";
 import { Form, Label, ErrorMessage, Select } from "../../../style/forms";
-import { StyledButtonFive } from "../../../style/buttons";
+import { StyledBlueButton } from "../../../style/buttons";
 import { deleteProduct } from "../../../apihandling/apiCalls";
 import { Product } from "../../../models/Product";
 import { getProducts } from "../../../apihandling/apiCalls";
@@ -47,7 +47,7 @@ const DeleteProduct = () => {
           ))}
         </Select>
 
-        <StyledButtonFive onClick={handleDelete}>Send</StyledButtonFive>
+        <StyledBlueButton onClick={handleDelete}>Send</StyledBlueButton>
         {errorState.isError && (
           <ErrorMessage>{errorState.message}</ErrorMessage>
         )}

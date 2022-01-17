@@ -6,7 +6,7 @@ import SecondNavbar from "../../components/navbar/SecondNavbar";
 //styles
 import { Wrapper, Form, Label, Input, ErrorMessage } from "../../style/forms";
 import { Text, SmallText } from "../../style/text";
-import { StyledButtonFour } from "../../style/buttons";
+import { StyledBlueButton } from "../../style/buttons";
 
 //functions
 import { login } from "../../apihandling/apiCalls";
@@ -76,12 +76,12 @@ const Login = () => {
           onChange={handleChange}
         ></Input>
 
-        <StyledButtonFour
+        <StyledBlueButton
           style={{ margin: "1em auto 0em auto" }}
           onClick={handleLogin}
         >
           Logg Inn
-        </StyledButtonFour>
+        </StyledBlueButton>
 
         {errorState.isError && (
           <ErrorMessage>{errorState.message}</ErrorMessage>
