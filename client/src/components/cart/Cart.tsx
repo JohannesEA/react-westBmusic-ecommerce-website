@@ -38,23 +38,23 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
     return price;
   };
 
-  useEffect(() => {
-    const makeRequest = async () => {
-      try {
-        const res = await axios.post(
-          "https://westbmusic.herokuapp.com/api/checkout/payment",
-          {
-            tokenId: stripeToken.id,
-            amount: calculateTotal(cartItems),
-          }
-        );
-        console.log(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    stripeToken && makeRequest();
-  }, [stripeToken, calculateTotal(cartItems)]);
+  // useEffect(() => {
+  //   const makeRequest = async () => {
+  //     try {
+  //       const res = await axios.post(
+  //         "https://westbmusic.herokuapp.com/api/checkout/payment",
+  //         {
+  //           tokenId: stripeToken.id,
+  //           amount: calculateTotal(cartItems),
+  //         }
+  //       );
+  //       console.log(res.data);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   stripeToken && makeRequest();
+  // }, [stripeToken, calculateTotal(cartItems)]);
 
   return (
     <Wrapper>
@@ -71,8 +71,8 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
 
       <Buttons>
         <StripeCheckout
-          name="MadKing Music"
-          image="/assets/images/music-images/img1.jpg"
+          name="WestBMusic"
+          image="/assets/logos/logo1.png"
           billingAddress
           shippingAddress
           description={`Total pris er ` + calculateTotal(cartItems) + ` NOK`}
