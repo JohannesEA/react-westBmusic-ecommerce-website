@@ -5,19 +5,19 @@ import {
   Label,
   Input,
   ErrorMessage,
-  FileInput,
-  FileInputContainer,
+  // FileInput,
+  // FileInputContainer,
 } from "../../style/forms";
-import { Headline, UnderText, SmallText } from "../../style/text";
+import { Headline, UnderText } from "../../style/text";
 import { StyledButtonFive } from "../../style/buttons";
 
 const AdminWorkProcessSectionHandler = () => {
   const [errorState, setErrorState] = useState({ isError: false, message: "" });
-  const [userInput, setUserInput] = useState({
-    aboutTitle: "",
-    aboutDescription: "",
-    aboutImage: "",
-  });
+  // const [userInput, setUserInput] = useState({
+  //   aboutTitle: "",
+  //   aboutDescription: "",
+  //   aboutImage: "",
+  // });
 
   return (
     <Wrapper>

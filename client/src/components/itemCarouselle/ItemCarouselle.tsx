@@ -1,6 +1,6 @@
 //Functions
 import { getProducts } from "../../apihandling/apiCalls";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 //Components
 import Slider from "react-slick";
@@ -12,8 +12,6 @@ import ProductBox from "../../components/contentBoxes/ProductBox";
 import { Product } from "../../models/Product";
 
 //Call api
-// const getProducts = async (): Promise<Product[]> =>
-//   await (await fetch("http://localhost:5000/api/products")).json();
 
 type Props = {
   addToCart: (clickedItem: Product) => void;
@@ -22,9 +20,16 @@ type Props = {
 const ItemCarouselle: React.FC<Props> = ({ addToCart }) => {
   const { width } = getWindowDimensions();
   const [products, setProducts] = useState([] as Product[]);
-  getProducts().then((products) => {
-    setProducts(products as Product[]);
-  });
+
+  useEffect(() => {
+    const getAllProducts = async () => {
+      getProducts().then((products) => {
+        setProducts(products as Product[]);
+      });
+    };
+
+    getAllProducts();
+  }, [products]);
 
   const showSlides = () => {
     if (width > 2500) {

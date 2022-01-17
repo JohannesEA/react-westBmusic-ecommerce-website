@@ -14,11 +14,11 @@ const AdminProductsHandler = () => {
     delete: false,
   });
 
-  const handleTest = () => {
-    setState({ create: false, edit: false, delete: true });
+  // const handleTest = () => {
+  //   setState({ create: false, edit: false, delete: true });
 
-    console.log(state);
-  };
+  //   console.log(state);
+  // };
 
   return (
     <Wrapper>

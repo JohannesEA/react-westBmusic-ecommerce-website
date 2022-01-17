@@ -4,7 +4,7 @@ import { addProduct } from "../../../apihandling/apiCalls";
 
 //Styles
 import {
-  Wrapper,
+  // Wrapper,
   Form,
   Label,
   Input,
@@ -14,7 +14,7 @@ import {
 } from "../../../style/forms";
 import { SmallText } from "../../../style/text";
 import { StyledButtonFive } from "../../../style/buttons";
-import { Product } from "../../../models/Product";
+// import { Product } from "../../../models/Product";
 
 const CreateProduct = () => {
   const [errorState, setErrorState] = useState({ isError: false, message: "" });

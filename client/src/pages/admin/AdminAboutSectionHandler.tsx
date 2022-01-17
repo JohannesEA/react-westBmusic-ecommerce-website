@@ -13,11 +13,11 @@ import { StyledButtonFive } from "../../style/buttons";
 
 const AdminAboutSectionHandler = () => {
   const [errorState, setErrorState] = useState({ isError: false, message: "" });
-  const [userInput, setUserInput] = useState({
-    aboutTitle: "",
-    aboutDescription: "",
-    aboutImage: "",
-  });
+  // const [userInput, setUserInput] = useState({
+  //   aboutTitle: "",
+  //   aboutDescription: "",
+  //   aboutImage: "",
+  // });
 
   return (
     <Wrapper>

@@ -2,17 +2,23 @@ import { useEffect, useState, MouseEvent, ChangeEvent } from "react";
 import { Form, Label, ErrorMessage, Select } from "../../../style/forms";
 import { StyledButtonFive } from "../../../style/buttons";
 import { deleteProduct } from "../../../apihandling/apiCalls";
-import { BEATS } from "../../../dummydata/dummy";
-import { useQuery } from "react-query";
 import { Product } from "../../../models/Product";
-
-const getProducts = async (): Promise<Product[]> =>
-  await (await fetch("https://westbmusic.herokuapp.com/api/products")).json();
+import { getProducts } from "../../../apihandling/apiCalls";
 
 const DeleteProduct = () => {
   const [errorState, setErrorState] = useState({ isError: false, message: "" });
   const [productToDelete, setProductToDelete] = useState<string>();
-  const { data } = useQuery<Product[]>("products", getProducts);
+  const [products, setProducts] = useState([] as Product[]);
+
+  useEffect(() => {
+    const getAllProducts = async () => {
+      getProducts().then((products) => {
+        setProducts(products as Product[]);
+      });
+    };
+
+    getAllProducts();
+  }, [products]);
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
@@ -34,7 +40,7 @@ const DeleteProduct = () => {
           style={{ margin: ".5em auto 3em auto" }}
           onChange={handleChange}
         >
-          {data?.map((beat) => (
+          {products?.map((beat) => (
             <option key={beat._id} value={beat._id}>
               {beat._id}: {beat.title}, {beat.categories}, {beat.price}
             </option>

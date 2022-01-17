@@ -12,7 +12,7 @@ import { StyledButtonFive } from "../../style/buttons";
 
 const AdminHeroSectionHandler = () => {
   const [errorState, setErrorState] = useState({ isError: false, message: "" });
-  const [userInput, setUserInput] = useState({ heroImage: "" });
+  // const [userInput, setUserInput] = useState({ heroImage: "" });
 
   return (
     <Wrapper>

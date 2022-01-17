@@ -10,18 +10,24 @@ import {
 } from "../../../style/forms";
 import { SmallText } from "../../../style/text";
 import { StyledButtonFive } from "../../../style/buttons";
-import { BEATS } from "../../../dummydata/dummy";
-import { useQuery } from "react-query";
 import { Product } from "../../../models/Product";
 import { updateProduct } from "../../../apihandling/apiCalls";
-
-const getProducts = async (): Promise<Product[]> =>
-  await (await fetch("https://westbmusic.herokuapp.com/api/products")).json();
+import { getProducts } from "../../../apihandling/apiCalls";
 
 const EditProduct = () => {
   const [errorState, setErrorState] = useState({ isError: false, message: "" });
   const [productToDelete, setProductToDelete] = useState<string>();
-  const { data } = useQuery<Product[]>("products", getProducts);
+  const [products, setProducts] = useState([] as Product[]);
+
+  useEffect(() => {
+    const getAllProducts = async () => {
+      getProducts().then((products) => {
+        setProducts(products as Product[]);
+      });
+    };
+
+    getAllProducts();
+  }, [products]);
 
   const [userInput, setUserInput] = useState({
     title: "",
@@ -79,7 +85,7 @@ const EditProduct = () => {
           style={{ margin: ".5em auto 3em auto" }}
           onChange={handleSelectChange}
         >
-          {data?.map((beat) => (
+          {products?.map((beat) => (
             <option key={beat._id} value={beat._id}>
               {beat._id}: {beat.title}, {beat.categories}, {beat.price}
             </option>

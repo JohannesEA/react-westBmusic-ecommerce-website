@@ -61,25 +61,20 @@ function App() {
     });
   };
 
-  // useEffect(() => {
-  //   const set = () => {
-  //     setIsAuthenticated(localStorage.getItem("isAuthenticated"));
-  //   };
-  //   set();
-  // }, [isAuthenticated]);
+  useEffect(() => {
+    const set = () => {
+      setIsAuthenticated(localStorage.getItem("isAuthenticated"));
+    };
+    set();
+  }, [isAuthenticated]);
 
-  // useEffect(() => {
-  //   setTimeout(() => setIsLoading(false), 1500);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => setIsLoading(false), 1500);
+  }, []);
 
-  // useEffect(() => {
-  //   let timer1 = setTimeout(
-  //     () => localStorage.setItem("isAuthenticated", "false"),
-  //     1800000
-  //   );
-
-  //   clearTimeout(timer1);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => localStorage.setItem("isAuthenticated", "false"), 1500000);
+  }, []);
 
   if (isLoading) return <LoadingPage />;
 
