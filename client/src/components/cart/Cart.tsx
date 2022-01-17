@@ -42,7 +42,7 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await publicRequest.post("/checkout/payment", {
+        const res = await publicRequest.post("/api/checkout/payment", {
           tokenId: stripeToken.id,
           amount: calculateTotal(cartItems),
         });
