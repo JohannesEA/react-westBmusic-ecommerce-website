@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import getWindowDimensions from "../../common/Dimentions";
 import { Link } from "react-scroll";
 import { SmallText } from "../../style/text";

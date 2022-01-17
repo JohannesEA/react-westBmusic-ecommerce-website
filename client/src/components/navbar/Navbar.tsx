@@ -7,12 +7,12 @@ import {
 } from "./Navbar.styles";
 import { Spiral as Hamburger } from "hamburger-react";
 import getWindowDimensions from "../../common/Dimentions";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-scroll";
 import { Link as DomLink } from "react-router-dom";
 
 const Navbar = () => {
-  const { height, width } = getWindowDimensions();
+  const { width } = getWindowDimensions();
   const [isOpen, setOpen] = useState(false);
 
   return (

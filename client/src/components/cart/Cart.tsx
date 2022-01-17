@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import StripeCheckout, { Token } from "react-stripe-checkout";
 import { publicRequest } from "../../requestMethods";
 
@@ -39,20 +38,20 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
     return price;
   };
 
-  useEffect(() => {
-    const makeRequest = async () => {
-      try {
-        const res = await publicRequest.post("/api/checkout/payment", {
-          tokenId: stripeToken.id,
-          amount: calculateTotal(cartItems),
-        });
-        console.log(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    stripeToken && makeRequest();
-  }, [stripeToken, calculateTotal(cartItems)]);
+  // useEffect(() => {
+  //   const makeRequest = async () => {
+  //     try {
+  //       const res = await publicRequest.post("/api/checkout/payment", {
+  //         tokenId: stripeToken.id,
+  //         amount: calculateTotal(cartItems),
+  //       });
+  //       console.log(res.data);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   stripeToken && makeRequest();
+  // }, [stripeToken, calculateTotal(cartItems), cartItems]);
 
   return (
     <Wrapper>

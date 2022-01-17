@@ -10,7 +10,6 @@ import getWindowDimensions from "../../common/Dimentions";
 import ProductBox from "../../components/contentBoxes/ProductBox";
 //Styles
 import { Product } from "../../models/Product";
-import { useQuery } from "react-query";
 
 //Call api
 // const getProducts = async (): Promise<Product[]> =>

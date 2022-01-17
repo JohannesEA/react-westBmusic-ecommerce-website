@@ -1,6 +1,5 @@
 //Functions
 import { useState, useEffect } from "react";
-import styled from "styled-components";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { getProducts } from "./apihandling/apiCalls";
 
@@ -19,7 +18,6 @@ import LoadingPage from "./components/loading/LoadingPage";
 
 //Styles
 import { CartButton, DeleteButton } from "./style/buttons";
-import { useQuery } from "react-query";
 import { BsCart } from "react-icons/bs";
 import Login from "./pages/login/Login";
 import AdminHome from "./pages/admin/AdminHome";
@@ -130,5 +128,3 @@ function App() {
 }
 
 export default App;
-
-const Container = styled.div``;
