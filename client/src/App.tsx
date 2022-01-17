@@ -89,8 +89,6 @@ function App() {
 
   if (isLoading) return <LoadingPage />;
 
-  console.log("User logged in: ", isAuthenticated);
-
   return (
     <Router>
       <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
