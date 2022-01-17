@@ -56,32 +56,39 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
   return (
     <Wrapper>
       <h1>Din Handlekurv</h1>
-      {cartItems.length === 0 ? <p>Ingen produkter i handlekurven</p> : null}
-      {cartItems.map((item) => (
-        <CartItem
-          key={item._id}
-          item={item}
-          removeFromCart={() => removeFromCart(item)}
-        />
-      ))}
-      <h2>Total pris: {calculateTotal(cartItems)} NOK</h2>
-
-      <Buttons>
-        <StripeCheckout
-          name="WestBMusic"
-          image="/assets/logos/logo1.png"
-          billingAddress
-          shippingAddress
-          description={`Total pris er ` + calculateTotal(cartItems) + ` NOK`}
-          amount={2000}
-          token={onToken}
-          stripeKey={KEY}
-        >
+      {cartItems.length === 0 ? (
+        <p>Ingen produkter i handlekurven</p>
+      ) : (
+        <>
           {" "}
-          <StyledBlueButton>Sjekk ut</StyledBlueButton>
-        </StripeCheckout>
-        <StyledOrangeButton>Vipps</StyledOrangeButton>
-      </Buttons>
+          {cartItems.map((item) => (
+            <CartItem
+              key={item._id}
+              item={item}
+              removeFromCart={() => removeFromCart(item)}
+            />
+          ))}
+          <h2>Total pris: {calculateTotal(cartItems)} NOK</h2>
+          <Buttons>
+            <StripeCheckout
+              name="WestBMusic"
+              image="/assets/logos/logo1.png"
+              billingAddress
+              shippingAddress
+              description={
+                `Total pris er ` + calculateTotal(cartItems) + ` NOK`
+              }
+              amount={2000}
+              token={onToken}
+              stripeKey={KEY}
+            >
+              {" "}
+              <StyledBlueButton>Sjekk ut</StyledBlueButton>
+            </StripeCheckout>
+            <StyledOrangeButton>Vipps</StyledOrangeButton>
+          </Buttons>
+        </>
+      )}
     </Wrapper>
   );
 };
