@@ -42,7 +42,7 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
     const makeRequest = async () => {
       try {
         const res = await axios.post(
-          "http://localhost:5000/api/checkout/payment",
+          "https://westbmusic.herokuapp.com/api/checkout/payment",
           {
             tokenId: stripeToken.id,
             amount: calculateTotal(cartItems),

@@ -12,9 +12,9 @@ router.post("/payment", (req, res) => {
     },
     (stripeErr, stripeRes) => {
       if (stripeErr) {
-        res.status(500).jaon(stripeErr);
+        res.status(500).json(stripeErr);
       } else {
-        res.status(200).jaon(stripeRes);
+        res.status(200).json(stripeRes);
       }
     }
   );
