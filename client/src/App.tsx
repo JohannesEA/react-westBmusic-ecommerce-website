@@ -130,19 +130,11 @@ function App() {
         <Route path="/confirm" element={<Confirm />} />
         <Route
           path="/login"
-          element={
-            isAuthenticated === "false" ? <Login /> : <Navigate to="/admin" />
-          }
+          element={isAuthenticated === "false" ? <Login /> : <AdminHome />}
         />
         <Route
           path="/admin"
-          element={
-            isAuthenticated === "true" ? (
-              <AdminHome />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
+          element={isAuthenticated === "true" ? <AdminHome /> : <Login />}
         />
 
         <Route path="/error" element={<Error />} />

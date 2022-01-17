@@ -48,7 +48,7 @@ const Login = () => {
       console.log(error);
       setErrorState({
         isError: true,
-        message: "Feil brukernavn eller passord",
+        message: "Brukernavn og passord trenger verdier.",
       });
     }
   };
