@@ -12,8 +12,10 @@ export const login = async (user: User) => {
     localStorage.setItem("isAuthenticated", "true");
     localStorage.setItem("accessToken", res.data.accessToken);
     window.location.reload();
+    return true;
   } catch (err) {
     console.log("Login Failed!", err);
+    return false;
   }
 };
 

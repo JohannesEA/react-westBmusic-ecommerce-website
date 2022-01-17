@@ -22,15 +22,22 @@ const Login = () => {
     setUserInput({ ...userInput, [name]: value });
   };
 
-  const handleLogin = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleLogin = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
       if (userInput.password !== "" && userInput.username !== "") {
-        login(userInput);
-        setErrorState({
-          isError: false,
-          message: "",
-        });
+        var userLogin = login(userInput);
+        if (await userLogin) {
+          setErrorState({
+            isError: false,
+            message: "",
+          });
+        } else {
+          setErrorState({
+            isError: true,
+            message: "Brukernavn eller passord er feil.",
+          });
+        }
       } else {
         setErrorState({
           isError: true,
@@ -56,12 +63,14 @@ const Login = () => {
         </SmallText>
         <Label>Brukernavn</Label>
         <Input
+          type="text"
           name="username"
           placeholder="olanormann123"
           onChange={handleChange}
         ></Input>
         <Label>Passord</Label>
         <Input
+          type="password"
           name="password"
           placeholder="********"
           onChange={handleChange}
