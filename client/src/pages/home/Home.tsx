@@ -6,10 +6,10 @@ import { HERO, ABOUT, WORK, PRODUCTSECTION } from "../../dummydata/dummy";
 import Products from "../../pages/home/products/Products";
 import Contact from "./contact/Contact";
 import Navbar from "../../components/navbar/Navbar";
-import { CartItemType } from "../../App";
+import { Product } from "../../models/Product";
 
 type Props = {
-  addToCart: (clickedItem: CartItemType) => void;
+  addToCart: (clickedItem: Product) => void;
 };
 
 const Home: React.FC<Props> = ({ addToCart }) => {

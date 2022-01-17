@@ -2,11 +2,11 @@ import React from "react";
 import ItemCarouselle from "../../../components/itemCarouselle/ItemCarouselle";
 import { Headline } from "../../../style/text";
 import { Wrapper } from "./Products.styles";
-import { CartItemType } from "../../../App";
+import { Product } from "../../../models/Product";
 
 type Props = {
   title: string;
-  addToCart: (clickedItem: CartItemType) => void;
+  addToCart: (clickedItem: Product) => void;
 };
 
 const Products: React.FC<Props> = ({ title, addToCart }) => {

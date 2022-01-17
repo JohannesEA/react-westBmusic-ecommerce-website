@@ -5,20 +5,20 @@ import "slick-carousel/slick/slick-theme.css";
 import getWindowDimensions from "../../common/Dimentions";
 import ProductBox from "../../components/contentBoxes/ProductBox";
 //Styles
-import { CartItemType } from "../../App";
+import { Product } from "../../models/Product";
 import { useQuery } from "react-query";
 
 //Call api
-const getProducts = async (): Promise<CartItemType[]> =>
+const getProducts = async (): Promise<Product[]> =>
   await (await fetch("https://westbmusic.herokuapp.com/api/products")).json();
 
 type Props = {
-  addToCart: (clickedItem: CartItemType) => void;
+  addToCart: (clickedItem: Product) => void;
 };
 
 const ItemCarouselle: React.FC<Props> = ({ addToCart }) => {
   const { width } = getWindowDimensions();
-  const { data, isLoading, error } = useQuery<CartItemType[]>(
+  const { data, isLoading, error } = useQuery<Product[]>(
     "products",
     getProducts
   );

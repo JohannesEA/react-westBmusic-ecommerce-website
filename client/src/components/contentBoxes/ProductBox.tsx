@@ -1,5 +1,8 @@
+//Functions
 import { useState, useRef } from "react";
-import getWindowDimensions from "../../common/Dimentions";
+import { useNavigate } from "react-router-dom";
+
+//Styles
 import { Wrapper, ImageContainer, Image, Buttons } from "./ProductBox.styles";
 import { Text, SmallText } from "../../style/text";
 import {
@@ -7,14 +10,14 @@ import {
   AiOutlinePlayCircle,
   AiOutlinePauseCircle,
 } from "react-icons/ai";
-import { CartItemType } from "../../App";
-import { useNavigate } from "react-router-dom";
 import { BsCartPlus } from "react-icons/bs";
 import { PlayMusicAnimation, Circle } from "../../animations/animations";
+//Types
+import { Product } from "../../models/Product";
 
 type Props = {
-  clickedItem: CartItemType;
-  addToCart: (clickedItem: CartItemType) => void;
+  clickedItem: Product;
+  addToCart: (clickedItem: Product) => void;
   // removeFromCart: (id: number) => void;
 };
 
@@ -22,9 +25,8 @@ const ProductBox: React.FC<Props> = ({ clickedItem, addToCart }) => {
   const [playing, setPlaying] = useState(false);
   let path = "";
   const navigate = useNavigate();
-  const [isActive, setIsActive] = useState(false);
 
-  const handleNavigateToProductInfo = (item: CartItemType) => {
+  const handleNavigateToProductInfo = (item: Product) => {
     path = "/products/" + item._id;
     navigate(path);
   };
@@ -35,13 +37,11 @@ const ProductBox: React.FC<Props> = ({ clickedItem, addToCart }) => {
     if (playing) {
       if (audioPlayer.current) {
         setPlaying(false);
-        setIsActive(false);
         audioPlayer.current.pause();
       }
     } else {
       if (audioPlayer.current) {
         setPlaying(true);
-        setIsActive(true);
         audioPlayer.current.play();
       }
     }

@@ -1,7 +1,7 @@
 import React from "react";
 
 //Components
-import { CartItemType } from "../../App";
+import { Product } from "../../models/Product";
 import Button from "@material-ui/core/Button";
 
 //Styles
@@ -9,8 +9,8 @@ import { Wrapper } from "./CartItems.styles";
 import { AiOutlineDelete } from "react-icons/ai";
 
 type Props = {
-  item: CartItemType;
-  removeFromCart: (item: CartItemType) => void;
+  item: Product;
+  removeFromCart: (item: Product) => void;
 };
 
 const CartItem: React.FC<Props> = ({ item, removeFromCart }) => {

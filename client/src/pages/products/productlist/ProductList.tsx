@@ -6,20 +6,19 @@ import { Wrapper, ProductListContainer } from "./ProductList.styles";
 import { Headline } from "../../../style/text";
 
 //types
-import { CartItemType } from "../../../App";
-
+import { Product } from "../../../models/Product";
 import { useQuery } from "react-query";
 
 type Props = {
-  addToCart: (clickedItem: CartItemType) => void;
+  addToCart: (clickedItem: Product) => void;
 };
 
 //Call api
-const getProducts = async (): Promise<CartItemType[]> =>
+const getProducts = async (): Promise<Product[]> =>
   await (await fetch("https://westbmusic.herokuapp.com/api/products")).json();
 
 const ProductList: React.FC<Props> = ({ addToCart }) => {
-  const { data, isLoading, error } = useQuery<CartItemType[]>(
+  const { data, isLoading, error } = useQuery<Product[]>(
     "products",
     getProducts
   );

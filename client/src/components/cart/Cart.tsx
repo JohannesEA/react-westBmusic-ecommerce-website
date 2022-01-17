@@ -4,22 +4,24 @@ import React from "react";
 import CartItem from "./CartItem";
 
 //Types
-import { CartItemType } from "../../App";
+import { Product } from "../../models/Product";
 
 //Styles
 import { Wrapper, Buttons } from "./Cart.styles";
 import { StyledButtonFour } from "../../style/buttons";
 
 type Props = {
-  cartItems: CartItemType[];
-  removeFromCart: (item: CartItemType) => void;
+  cartItems: Product[];
+  removeFromCart: (item: Product) => void;
 };
 
 const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
-  const calculateTotal = (items: CartItemType[]) => {
+  const calculateTotal = (items: Product[]) => {
     var price = 0;
     for (var i = 0; i < items.length; i++) {
-      price += items[i].price;
+      if (items[i].price !== undefined) {
+        price += items[i].price;
+      }
     }
 
     return price;

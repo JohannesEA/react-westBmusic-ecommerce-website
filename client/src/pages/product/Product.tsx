@@ -15,27 +15,26 @@ import {
 import { Headline, Text } from "../../style/text";
 import { BsCartPlus } from "react-icons/bs";
 import { AiOutlinePlayCircle, AiOutlinePauseCircle } from "react-icons/ai";
+import { PlayMusicAnimation, Circle } from "../../animations/animations";
+
 //Types
-import { CartItemType } from "../../App";
+import { Product } from "../../models/Product";
 import { useQuery } from "react-query";
 
 type Props = {
-  addToCart: (clickedItem: CartItemType) => void;
+  addToCart: (clickedItem: Product) => void;
 };
 
-const Product: React.FC<Props> = ({ addToCart }) => {
+const ProductPage: React.FC<Props> = ({ addToCart }) => {
   const [playing, setPlaying] = useState(false);
-  const [item, setItem] = useState({} as CartItemType);
+  const [item, setItem] = useState({} as Product);
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  const getProduct = async (): Promise<CartItemType> =>
+  const getProduct = async (): Promise<Product> =>
     await (
       await fetch("https://westbmusic.herokuapp.com/api/products/find/" + id)
     ).json();
-  const { data, isLoading, error } = useQuery<CartItemType>(
-    "product",
-    getProduct
-  );
+  const { data, isLoading, error } = useQuery<Product>("product", getProduct);
 
   const audioPlayer = useRef<HTMLAudioElement>(null);
 
@@ -92,11 +91,19 @@ const Product: React.FC<Props> = ({ addToCart }) => {
               }}
             />
           )}
-          <BsCartPlus fontSize={50} onClick={() => addToCart(item)} />
+          <BsCartPlus
+            fontSize={50}
+            onClick={() => addToCart(data as Product)}
+          />
         </Buttons>
+        {playing && (
+          <PlayMusicAnimation>
+            <Circle />
+          </PlayMusicAnimation>
+        )}
       </ProductContainer>
     </Wrapper>
   );
 };
 
-export default Product;
+export default ProductPage;

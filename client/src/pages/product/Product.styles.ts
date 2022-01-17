@@ -18,6 +18,7 @@ export const ProductContainer = styled.div`
   box-shadow: 0px 0px 4px 2px #d8d8d8;
   margin: 1em auto;
   border-radius: 0.5em;
+  padding-bottom: 1em;
 `;
 
 export const ProductDescription = styled.div``;
