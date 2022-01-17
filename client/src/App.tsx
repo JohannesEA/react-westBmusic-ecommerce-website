@@ -1,7 +1,6 @@
 //Functions
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { getProducts } from "./apihandling/apiCalls";
 
 //Components
 import Home from "./pages/home/Home";
@@ -29,10 +28,6 @@ function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([] as Product[]);
   const [isLoading, setIsLoading] = useState(true);
-  getProducts().then(() => {
-    console.log("Products is loaded in");
-    setIsLoading(false);
-  });
 
   const [isAuthenticated, setIsAuthenticated] = useState(
     localStorage.getItem("isAuthenticated")
@@ -60,7 +55,7 @@ function App() {
         );
       }
       //2. First time the item is added
-      alert(`Productet ${clickedItem.title} er lagt til i handlekurven.`);
+      alert(`Produktet ${clickedItem.title} er lagt til i handlekurven.`);
 
       return [...prev, { ...clickedItem, amount: 1 }];
     });
@@ -72,6 +67,10 @@ function App() {
     };
     set();
   }, [isAuthenticated]);
+
+  useEffect(() => {
+    setTimeout(() => setIsLoading(false), 1500);
+  }, []);
 
   useEffect(() => {
     let timer1 = setTimeout(
