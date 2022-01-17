@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-// import { getProducts } from "./apihandling/apiCalls";
+import { getProducts } from "./apihandling/apiCalls";
 
 //Components
 import Home from "./pages/home/Home";
@@ -27,17 +27,16 @@ import AdminHome from "./pages/admin/AdminHome";
 //Types
 import { Product } from "./models/Product";
 
-//Call api
-const getProducts = async (): Promise<Product[]> =>
-  await (await fetch("https://westbmusic.herokuapp.com/api/products")).json();
-
 function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([] as Product[]);
-  const { data, isLoading, error } = useQuery<Product[]>(
-    "products",
-    getProducts
-  );
+  const [isLoading, setIsLoading] = useState(true);
+  const [products, setProducts] = useState([] as Product[]);
+  getProducts().then((products) => {
+    setProducts(products as Product[]);
+    setIsLoading(false);
+  });
+
   const [isAuthenticated, setIsAuthenticated] = useState(
     localStorage.getItem("isAuthenticated")
   );

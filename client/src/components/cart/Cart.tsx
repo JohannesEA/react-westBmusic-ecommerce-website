@@ -38,23 +38,23 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
     return price;
   };
 
-  // useEffect(() => {
-  //   const makeRequest = async () => {
-  //     try {
-  //       const res = await axios.post(
-  //         "https://westbmusic.herokuapp.com/api/checkout/payment",
-  //         {
-  //           tokenId: stripeToken.id,
-  //           amount: calculateTotal(cartItems),
-  //         }
-  //       );
-  //       console.log(res.data);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   stripeToken && makeRequest();
-  // }, [stripeToken, calculateTotal(cartItems)]);
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await axios.post(
+          "http://localhost:5000/api/checkout/payment",
+          {
+            tokenId: stripeToken.id,
+            amount: calculateTotal(cartItems),
+          }
+        );
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    stripeToken && makeRequest();
+  }, [stripeToken, calculateTotal(cartItems)]);
 
   return (
     <Wrapper>

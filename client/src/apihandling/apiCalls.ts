@@ -32,7 +32,7 @@ export const logout = async () => {
 export const getProducts = async () => {
   try {
     const res = await publicRequest.get("api/products");
-    return res;
+    return res.data as Product[];
   } catch (err) {
     console.log(err);
   }

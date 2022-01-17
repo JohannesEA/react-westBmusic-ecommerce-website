@@ -10,7 +10,7 @@ import { useQuery } from "react-query";
 
 //Call api
 const getProducts = async (): Promise<Product[]> =>
-  await (await fetch("https://westbmusic.herokuapp.com/api/products")).json();
+  await (await fetch("http://localhost:5000/api/products")).json();
 
 type Props = {
   addToCart: (clickedItem: Product) => void;

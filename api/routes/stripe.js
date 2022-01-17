@@ -1,16 +1,14 @@
 const router = require("express").Router();
-const stripe = require("stripe")(
-  "pk_test_51JwS4BDJ6KD8X4jUYGm2VeyofI9YOdonXbCHy3GB12JGM3gPHdY7l3qi9cd7fAvMsTtmiZdu0sjZWy20SxAghpui007JvXEC6j"
-);
+const stripe = require("stripe")(process.env.STRIPE_KEY);
 
-stripe.post("/payment", (req, res) => {
+router.post("/payment", (req, res) => {
   // res.setHeader("Access-Control-Allow-Origin", "*");
 
-  KEY.charges.create(
+  stripe.charges.create(
     {
       source: req.body.tokenId,
       amount: req.body.amount,
-      currency: "nok",
+      currency: "usd",
     },
     (stripeErr, stripeRes) => {
       if (stripeErr) {
