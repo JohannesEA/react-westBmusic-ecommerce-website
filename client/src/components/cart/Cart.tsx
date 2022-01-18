@@ -39,15 +39,13 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
     return price;
   };
 
-  console.log(stripeToken);
-
   useEffect(() => {
     const makeRequest = async () => {
       try {
         if (cartItems.length > 0) {
           const res = await publicRequest.post("api/checkout/payment", {
             tokenId: stripeToken.id,
-            amount: calculateTotal(cartItems),
+            amount: calculateTotal(cartItems) * 100,
           });
           console.log(res.data);
         }
