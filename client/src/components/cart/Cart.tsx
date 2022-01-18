@@ -24,7 +24,8 @@ const KEY =
 const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
   const [stripeToken, setStripeToken] = useState({} as Token);
 
-  const onToken = (token: Token) => {
+  const onToken = (token: any) => {
+    console.log("Token", token);
     setStripeToken(token);
   };
 
@@ -55,6 +56,8 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
     };
     stripeToken && makeRequest();
   }, [stripeToken, calculateTotal(cartItems), cartItems]);
+
+  console.log(stripeToken);
 
   return (
     <Wrapper>

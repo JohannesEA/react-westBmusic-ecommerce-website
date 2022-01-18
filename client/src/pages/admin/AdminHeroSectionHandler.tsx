@@ -7,7 +7,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import app from "../../firebase";
-import { getContent } from "../../apihandling/apiCalls";
+import { getContent, updateContent } from "../../apihandling/apiCalls";
 
 //types
 import { Content } from "../../models/Content";
@@ -41,6 +41,7 @@ const AdminHeroSectionHandler = () => {
   }, []);
 
   const [userInput, setUserInput] = useState({
+    _id: contents[0]?._id,
     herotitle: contents[0]?.herotitle,
     heroimg: "",
     abouttitle: contents[0]?.abouttitle,
@@ -67,7 +68,7 @@ const AdminHeroSectionHandler = () => {
     e.preventDefault();
     const fileName = new Date().getTime() + userInput.heroimg;
 
-    const storage = getStorage();
+    const storage = getStorage(app);
     const storageRef = ref(storage, fileName);
     const file = stringToBlog(userInput.heroimg);
     const uploadTask = uploadBytesResumable(storageRef, file);
@@ -95,10 +96,9 @@ const AdminHeroSectionHandler = () => {
         });
       },
       () => {
-        // Handle successful uploads on complete
-        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setUserInput({ ...userInput, [userInput.heroimg]: downloadURL });
+          console.log(downloadURL);
           setErrorState({
             isError: true,
             message: "Bildet er lastet opp!",
@@ -106,6 +106,11 @@ const AdminHeroSectionHandler = () => {
         });
       }
     );
+  };
+
+  const handleSendUpdate = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    updateContent(contents[0]._id, userInput);
   };
 
   console.log(userInput);
@@ -128,9 +133,15 @@ const AdminHeroSectionHandler = () => {
         <FileInput id="file" name="heroimg" onChange={handleChange}></FileInput>
         {/* </FileInputContainer> */}
 
-        <StyledBlueButton onClick={handleUpdateHeroContent}>
-          Send
-        </StyledBlueButton>
+        <div>
+          {" "}
+          <StyledBlueButton onClick={handleUpdateHeroContent}>
+            Last opp
+          </StyledBlueButton>
+          <StyledBlueButton onClick={handleUpdateHeroContent}>
+            Send
+          </StyledBlueButton>
+        </div>
 
         {errorState.isError && (
           <ErrorMessage>{errorState.message}</ErrorMessage>

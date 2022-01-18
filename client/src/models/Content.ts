@@ -1,4 +1,5 @@
 export type Content = {
+  _id: string;
   herotitle: string;
   heroimg: string;
   abouttitle: string;
