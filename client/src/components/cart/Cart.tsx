@@ -39,6 +39,8 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
     return price;
   };
 
+  console.log(stripeToken);
+
   useEffect(() => {
     const makeRequest = async () => {
       try {
@@ -81,7 +83,7 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
               description={
                 `Total pris er ` + calculateTotal(cartItems) + ` NOK`
               }
-              amount={2000}
+              amount={calculateTotal(cartItems) * 100}
               token={onToken}
               stripeKey={KEY}
             >
