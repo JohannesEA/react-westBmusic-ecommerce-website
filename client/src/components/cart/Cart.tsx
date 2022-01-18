@@ -17,7 +17,9 @@ type Props = {
   removeFromCart: (item: Product) => void;
 };
 
-const KEY = process.env.STRIPE_KEY as string;
+// const KEY = process.env.STRIPE_KEY as string;
+const KEY =
+  "pk_test_51JwS4BDJ6KD8X4jUYGm2VeyofI9YOdonXbCHy3GB12JGM3gPHdY7l3qi9cd7fAvMsTtmiZdu0sjZWy20SxAghpui007JvXEC6j";
 
 const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
   const [stripeToken, setStripeToken] = useState({} as Token);
@@ -40,19 +42,19 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await publicRequest.post("/api/checkout/payment", {
-          tokenId: stripeToken.id,
-          amount: calculateTotal(cartItems),
-        });
-        console.log(res.data);
+        if (cartItems.length > 0) {
+          const res = await publicRequest.post("api/checkout/payment", {
+            tokenId: stripeToken.id,
+            amount: calculateTotal(cartItems),
+          });
+          console.log(res.data);
+        }
       } catch (err) {
         console.log(err);
       }
     };
     stripeToken && makeRequest();
   }, [stripeToken, calculateTotal(cartItems), cartItems]);
-
-  console.log("KEY", KEY);
 
   return (
     <Wrapper>
@@ -86,7 +88,13 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
               {" "}
               <StyledBlueButton>Sjekk ut</StyledBlueButton>
             </StripeCheckout>
-            <StyledOrangeButton>Vipps</StyledOrangeButton>
+            <StyledOrangeButton
+              onClick={() =>
+                alert("Denne betalingsmåten er ikke implementert enda..")
+              }
+            >
+              Vipps
+            </StyledOrangeButton>
           </Buttons>
         </>
       )}
