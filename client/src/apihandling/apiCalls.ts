@@ -70,7 +70,7 @@ export const addProduct = async (product: Product) => {
 export const getContent = async () => {
   try {
     const res = await publicRequest.get("api/contents");
-    return res;
+    return res.data as Content[];
   } catch (err) {
     return null;
   }

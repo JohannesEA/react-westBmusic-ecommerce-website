@@ -27,7 +27,7 @@ const EditProduct = () => {
     };
 
     getAllProducts();
-  }, [products]);
+  }, []);
 
   const [userInput, setUserInput] = useState({
     title: "",

@@ -59,9 +59,7 @@ export const ConfirmMessage = styled.p`
 
 export const FileInput = styled.input.attrs({
   type: "file",
-})`
-  display: none;
-`;
+})``;
 
 export const FileInputContainer = styled.button`
   background-color: var(--color-6-hover);

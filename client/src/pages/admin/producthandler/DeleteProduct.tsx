@@ -18,7 +18,7 @@ const DeleteProduct = () => {
     };
 
     getAllProducts();
-  }, [products]);
+  }, []);
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
