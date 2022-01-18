@@ -19,6 +19,7 @@
         "@types/styled-components": "^5.1.19",
         "axios": "^0.24.0",
         "components": "^0.1.0",
+        "dotenv": "^14.2.0",
         "firebase": "^9.6.3",
         "hamburger-react": "^2.4.1",
         "howler": "^2.2.3",
