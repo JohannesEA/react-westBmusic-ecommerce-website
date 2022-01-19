@@ -7,6 +7,7 @@ const authRoute = require("./routes/auth");
 const userRoute = require("./routes/user");
 const contentRoute = require("./routes/content");
 const stripeRoute = require("./routes/stripe");
+const vippsRoute = require("./routes/vipps");
 
 // const path = require('path');
 //ndjsvnjsavdmjkasdvn1e3eu127
@@ -28,6 +29,7 @@ app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
 app.use("/api/contents", contentRoute);
 app.use("/api/checkout", stripeRoute);
+app.use("/api/checkout/vipps", vippsRoute);
 
 app.get("/", (req, res) => {
   res.send("Server is running..");

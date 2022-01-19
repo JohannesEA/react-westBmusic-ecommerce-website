@@ -19,15 +19,17 @@ import {
   Label,
   ErrorMessage,
   FileInput,
-  FileInputContainer,
 } from "../../style/forms";
 import { Headline, UnderText, SmallText } from "../../style/text";
 import { StyledBlueButton } from "../../style/buttons";
-import e from "express";
 
 const AdminHeroSectionHandler = () => {
-  const [errorState, setErrorState] = useState({ isError: false, message: "" });
-
+  const [errorState, setErrorState] = useState({
+    isError: false,
+    message: "",
+    color: "",
+  });
+  const [loading, setLoading] = useState({ loading: false, message: "" });
   const [contents, setContents] = useState([] as Content[]);
 
   useEffect(() => {
@@ -56,21 +58,15 @@ const AdminHeroSectionHandler = () => {
   });
   const stringToBlog = (txt: string) => new Blob([txt]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    e.persist();
+  const handleUpdateHeroContent = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
     let value = e.target.value;
     let name = e.target.name;
 
-    setUserInput({ ...userInput, [name]: value });
-  };
-
-  const handleUpdateHeroContent = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    const fileName = new Date().getTime() + userInput.heroimg;
-
+    const fileName = new Date().getTime() + value;
     const storage = getStorage(app);
     const storageRef = ref(storage, fileName);
-    const file = stringToBlog(userInput.heroimg);
+    const file = stringToBlog(value);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
@@ -78,13 +74,14 @@ const AdminHeroSectionHandler = () => {
       (snapshot) => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log("Upload is " + progress + "% done");
+        setLoading({ loading: true, message: "paused" });
+
         switch (snapshot.state) {
           case "paused":
-            console.log("Upload is paused");
+            setLoading({ loading: true, message: "paused" });
             break;
           case "running":
-            console.log("Upload is running");
+            setLoading({ loading: true, message: `${progress} % ferdig` });
             break;
         }
       },
@@ -93,16 +90,18 @@ const AdminHeroSectionHandler = () => {
         setErrorState({
           isError: true,
           message: "Feil under opplasting av bilde..",
+          color: "red",
         });
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          setUserInput({ ...userInput, [userInput.heroimg]: downloadURL });
-          console.log(downloadURL);
+          setUserInput({ ...userInput, [name]: downloadURL });
           setErrorState({
             isError: true,
             message: "Bildet er lastet opp!",
+            color: "green",
           });
+          setLoading({ loading: false, message: "" });
         });
       }
     );
@@ -111,10 +110,12 @@ const AdminHeroSectionHandler = () => {
   const handleSendUpdate = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     updateContent(contents[0]._id, userInput);
+    setErrorState({
+      isError: true,
+      message: "Bildet er lagret i skyen!",
+      color: "green",
+    });
   };
-
-  console.log(userInput);
-  // console.log(userInput);
 
   return (
     <Wrapper>
@@ -130,21 +131,28 @@ const AdminHeroSectionHandler = () => {
           }
         > */}
         <SmallText>Last Opp Bilde</SmallText>
-        <FileInput id="file" name="heroimg" onChange={handleChange}></FileInput>
+        <FileInput
+          id="file"
+          name="heroimg"
+          onChange={handleUpdateHeroContent}
+        ></FileInput>
         {/* </FileInputContainer> */}
 
         <div>
           {" "}
-          <StyledBlueButton onClick={handleUpdateHeroContent}>
+          {/* <StyledBlueButton onClick={handleUpdateHeroContent}>
             Last opp
-          </StyledBlueButton>
-          <StyledBlueButton onClick={handleUpdateHeroContent}>
-            Send
-          </StyledBlueButton>
+          </StyledBlueButton> */}
+          <StyledBlueButton onClick={handleSendUpdate}>Send</StyledBlueButton>
         </div>
+        {loading.loading && (
+          <p style={{ color: "black" }}>Laster opp bildet...</p>
+        )}
 
         {errorState.isError && (
-          <ErrorMessage>{errorState.message}</ErrorMessage>
+          <ErrorMessage style={{ color: `${errorState.color}` }}>
+            {errorState.message}
+          </ErrorMessage>
         )}
       </Form>
     </Wrapper>

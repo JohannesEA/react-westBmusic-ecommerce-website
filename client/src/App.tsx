@@ -1,6 +1,11 @@
 //Functions
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import { getContent } from "./apihandling/apiCalls";
 
 //Components
@@ -85,10 +90,12 @@ function App() {
   }, []);
 
   useEffect(() => {
-    setTimeout(() => localStorage.setItem("isAuthenticated", "false"), 1500000);
+    setTimeout(() => localStorage.setItem("isAuthenticated", "false"), 150000);
   }, []);
 
   if (isLoading) return <LoadingPage />;
+
+  console.log(isAuthenticated);
 
   return (
     <Router>
@@ -117,11 +124,19 @@ function App() {
         <Route path="/confirm" element={<Confirm />} />
         <Route
           path="/login"
-          element={isAuthenticated === "false" ? <Login /> : <AdminHome />}
+          element={
+            isAuthenticated === "false" ? <Login /> : <Navigate to="/admin" />
+          }
         />
         <Route
           path="/admin"
-          element={isAuthenticated === "true" ? <AdminHome /> : <Login />}
+          element={
+            isAuthenticated === "true" ? (
+              <AdminHome />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         />
 
         <Route path="/error" element={<Error />} />
