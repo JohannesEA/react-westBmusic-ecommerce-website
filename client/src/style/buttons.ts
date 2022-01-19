@@ -79,7 +79,7 @@ export const StyledBlueButton = styled(IconButton)`
   height: 1.5em;
   min-width: 6em;
   max-width: 10em;
-  margin: 0 auto;
+  margin: 0 auto !important;
   background-color: rgba(6, 42, 75, 0.7) !important;
   color: var(--color-text) !important;
   border-radius: 0.5em !important;

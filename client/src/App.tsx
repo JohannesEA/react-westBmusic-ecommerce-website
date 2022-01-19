@@ -1,6 +1,7 @@
 //Functions
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { getContent } from "./apihandling/apiCalls";
 
 //Components
 import Home from "./pages/home/Home";
@@ -23,15 +24,26 @@ import AdminHome from "./pages/admin/AdminHome";
 
 //Types
 import { Product } from "./models/Product";
+import { Content } from "./models/Content";
 
 function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([] as Product[]);
-  const [isLoading, setIsLoading] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(
     localStorage.getItem("isAuthenticated")
   );
+  const [contents, setContents] = useState([] as Content[]);
+
+  useEffect(() => {
+    const getAllContent = async () => {
+      getContent().then((c) => {
+        setContents(c as Content[]);
+      });
+    };
+
+    getAllContent();
+  }, []);
 
   const getTotalItems = () => cartItems.length;
 
