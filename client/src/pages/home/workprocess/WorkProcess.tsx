@@ -9,17 +9,9 @@ type Props = {
   p2: string;
   p3: string;
   p4: string;
-  undertitle: string;
 };
 
-const WorkProcess: React.FC<Props> = ({
-  title,
-  p1,
-  p2,
-  p3,
-  p4,
-  undertitle,
-}) => {
+const WorkProcess: React.FC<Props> = ({ title, p1, p2, p3, p4 }) => {
   const { width } = getWindowDimensions();
   const [processText, setProcessText] = useState("Trykk på sirklene");
   const handleFirstStepContent = () => {

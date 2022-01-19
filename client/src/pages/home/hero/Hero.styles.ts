@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+type Custom = {
+  image: string;
+};
+export const Wrapper = styled.div<Custom>`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   min-height: 40em;
@@ -21,7 +24,7 @@ export const Wrapper = styled.div`
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    background: url("/assets/images/img2.jpg") no-repeat;
+    background: url(${(props) => props.image}) no-repeat;
     background-size: cover;
     object-fit: cover;
   }
