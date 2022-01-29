@@ -34,6 +34,7 @@ const ProductPage: React.FC<Props> = ({ addToCart }) => {
     await (
       await fetch("https://westbmusic.herokuapp.com/api/products/find/" + id)
     ).json();
+
   const { data, isLoading, error } = useQuery<Product>("product", getProduct);
 
   const audioPlayer = useRef<HTMLAudioElement>(null);
@@ -51,6 +52,8 @@ const ProductPage: React.FC<Props> = ({ addToCart }) => {
       }
     }
   };
+
+  console.log(data);
 
   return (
     <Wrapper id="hero">

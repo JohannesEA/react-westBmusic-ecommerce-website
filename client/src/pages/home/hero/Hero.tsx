@@ -1,7 +1,10 @@
+//functions
+import { useState, useEffect } from "react";
+import { Link as DomLink } from "react-router-dom";
+
+//styles
 import { Wrapper } from "./Hero.styles";
 import { StyledTransparentButton } from "../../../style/buttons";
-import { Link as DomLink } from "react-router-dom";
-import djEventImg from "/assets/images/img1.jpg";
 
 export type Props = {
   image: string;

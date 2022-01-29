@@ -25,6 +25,7 @@ const ProductBox: React.FC<Props> = ({ clickedItem, addToCart }) => {
   const [playing, setPlaying] = useState(false);
   let path = "";
   const navigate = useNavigate();
+  const [index, setIndex] = useState(0);
 
   const handleNavigateToProductInfo = (item: Product) => {
     path = "/products/" + item._id;
@@ -33,19 +34,41 @@ const ProductBox: React.FC<Props> = ({ clickedItem, addToCart }) => {
 
   const audioPlayer = useRef<HTMLAudioElement>(null);
 
-  const handlePlaySong = () => {
+  // const handlePlaySong = () => {
+  //   if (playing) {
+  //     if (audioPlayer.current) {
+  //       setPlaying(false);
+  //       audioPlayer.current.pause();
+  //     }
+  //   } else {
+  //     if (audioPlayer.current) {
+  //       setPlaying(true);
+  //       audioPlayer.current.play();
+  //     }
+  //   }
+  // };
+
+  const handlePlayPauseSong = () => {
     if (playing) {
       if (audioPlayer.current) {
-        setPlaying(false);
         audioPlayer.current.pause();
+        audioPlayer.current.currentTime = 0;
+        setPlaying(false);
       }
     } else {
       if (audioPlayer.current) {
         setPlaying(true);
+
         audioPlayer.current.play();
+        setPlaying(true);
       }
     }
   };
+
+  if (index < 1) {
+    console.log(clickedItem.image);
+    setIndex(1);
+  }
 
   return (
     <Wrapper>
@@ -72,14 +95,14 @@ const ProductBox: React.FC<Props> = ({ clickedItem, addToCart }) => {
           <AiOutlinePlayCircle
             fontSize={35}
             onClick={() => {
-              handlePlaySong();
+              handlePlayPauseSong();
             }}
           />
         ) : (
           <AiOutlinePauseCircle
             fontSize={35}
             onClick={() => {
-              handlePlaySong();
+              handlePlayPauseSong();
             }}
           />
         )}

@@ -34,7 +34,7 @@ import { Content } from "./models/Content";
 function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([] as Product[]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(
     localStorage.getItem("isAuthenticated")
   );
@@ -48,7 +48,7 @@ function App() {
     };
 
     getAllContent();
-  }, []);
+  }, [contents]);
 
   const getTotalItems = () => cartItems.length;
 
@@ -86,16 +86,21 @@ function App() {
   }, [isAuthenticated]);
 
   useEffect(() => {
-    setTimeout(() => setIsLoading(false), 1500);
-  }, []);
+    const handleLoadingOnLoad = () => {
+      if (contents.length < 0) {
+        setIsLoading(true);
+      } else {
+        setIsLoading(false);
+      }
+      handleLoadingOnLoad();
+    };
+  }, [isLoading]);
 
   useEffect(() => {
     setTimeout(() => localStorage.setItem("isAuthenticated", "false"), 150000);
   }, []);
 
   if (isLoading) return <LoadingPage />;
-
-  console.log(isAuthenticated);
 
   return (
     <Router>
