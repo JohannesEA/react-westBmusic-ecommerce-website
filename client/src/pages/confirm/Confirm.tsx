@@ -1,10 +1,15 @@
-import SecondNavbar from "../../components/navbar/SecondNavbar";
+//functions/hooks
+import { Link as DomLink } from "react-router-dom";
+import { ScrollToTop } from "../../common/Functions";
+//styles
 import { Wrapper } from "./Confirm.styles";
 import { Headline, UnderText } from "../../style/text";
 import { StyledBlueButton } from "../../style/buttons";
-import { Link as DomLink } from "react-router-dom";
+//components
+import SecondNavbar from "../../components/navbar/SecondNavbar";
 
 const Confirm = () => {
+  ScrollToTop();
   return (
     <Wrapper>
       <SecondNavbar />

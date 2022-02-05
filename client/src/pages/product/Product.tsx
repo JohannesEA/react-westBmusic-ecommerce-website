@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import { ScrollToTop } from "../../common/Functions";
 //Components
 import SecondNavbar from "../../components/navbar/SecondNavbar";
 
@@ -26,6 +27,7 @@ type Props = {
 };
 
 const ProductPage: React.FC<Props> = ({ addToCart }) => {
+  ScrollToTop();
   const [playing, setPlaying] = useState(false);
   const [item, setItem] = useState({} as Product);
   const location = useLocation();
@@ -40,7 +42,7 @@ const ProductPage: React.FC<Props> = ({ addToCart }) => {
   const audioPlayer = useRef<HTMLAudioElement>(null);
 
   //Convert firebase file to mp3 file.
-  //Then play song. 
+  //Then play song.
 
   const handlePlaySong = (): void => {
     if (playing) {

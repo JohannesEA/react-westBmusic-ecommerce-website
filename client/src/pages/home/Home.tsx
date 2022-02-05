@@ -1,7 +1,7 @@
 //functions
 import { getContent } from "../../apihandling/apiCalls";
 import { useState, useEffect } from "react";
-
+import { ScrollToTop } from "../../common/Functions";
 //styles
 import styled from "styled-components";
 
@@ -24,6 +24,7 @@ type Props = {
 };
 
 const Home: React.FC<Props> = ({ addToCart }) => {
+  ScrollToTop();
   const [contents, setContents] = useState([] as Content[]);
 
   useEffect(() => {

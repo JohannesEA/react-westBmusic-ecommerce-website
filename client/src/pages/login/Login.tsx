@@ -1,5 +1,5 @@
 import { useState, MouseEvent, ChangeEvent } from "react";
-
+import { ScrollToTop } from "../../common/Functions";
 //components
 import SecondNavbar from "../../components/navbar/SecondNavbar";
 
@@ -12,6 +12,7 @@ import { StyledBlueButton } from "../../style/buttons";
 import { login } from "../../apihandling/apiCalls";
 
 const Login = () => {
+  ScrollToTop();
   const [errorState, setErrorState] = useState({ isError: false, message: "" });
   const [userInput, setUserInput] = useState({ username: "", password: "" });
 

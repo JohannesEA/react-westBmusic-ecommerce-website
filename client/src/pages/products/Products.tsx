@@ -1,3 +1,4 @@
+import { ScrollToTop } from "../../common/Functions";
 import { Wrapper } from "./Products.styles";
 import ProductList from "./productlist/ProductList";
 import SecondNavbar from "../../components/navbar/SecondNavbar";
@@ -8,6 +9,7 @@ type Props = {
 };
 
 const Products: React.FC<Props> = ({ addToCart }) => {
+  ScrollToTop();
   return (
     <Wrapper>
       <SecondNavbar />
