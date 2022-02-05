@@ -18,7 +18,6 @@ import { Product } from "../../models/Product";
 type Props = {
   clickedItem: Product;
   addToCart: (clickedItem: Product) => void;
-  // removeFromCart: (id: number) => void;
 };
 
 const ProductBox: React.FC<Props> = ({ clickedItem, addToCart }) => {
@@ -33,20 +32,6 @@ const ProductBox: React.FC<Props> = ({ clickedItem, addToCart }) => {
   };
 
   const audioPlayer = useRef<HTMLAudioElement>(null);
-
-  // const handlePlaySong = () => {
-  //   if (playing) {
-  //     if (audioPlayer.current) {
-  //       setPlaying(false);
-  //       audioPlayer.current.pause();
-  //     }
-  //   } else {
-  //     if (audioPlayer.current) {
-  //       setPlaying(true);
-  //       audioPlayer.current.play();
-  //     }
-  //   }
-  // };
 
   const handlePlayPauseSong = () => {
     if (playing) {
@@ -64,11 +49,6 @@ const ProductBox: React.FC<Props> = ({ clickedItem, addToCart }) => {
       }
     }
   };
-
-  if (index < 1) {
-    console.log(clickedItem.image);
-    setIndex(1);
-  }
 
   return (
     <Wrapper>

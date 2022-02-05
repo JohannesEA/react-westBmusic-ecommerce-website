@@ -39,7 +39,10 @@ const ProductPage: React.FC<Props> = ({ addToCart }) => {
 
   const audioPlayer = useRef<HTMLAudioElement>(null);
 
-  const handlePlaySong = () => {
+  //Convert firebase file to mp3 file.
+  //Then play song. 
+
+  const handlePlaySong = (): void => {
     if (playing) {
       if (audioPlayer.current) {
         setPlaying(false);

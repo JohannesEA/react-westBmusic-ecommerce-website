@@ -58,50 +58,49 @@ const AdminHeroSectionHandler = () => {
   });
   const stringToBlog = (txt: string) => new Blob([txt]);
 
-  const handleUpdateHeroContent = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    let value = e.target.value;
-    let name = e.target.name;
-
-    const fileName = new Date().getTime() + value;
+    const uploadedFile = e.currentTarget.files;
+    const fileName = new Date().getTime() + uploadedFile![0].name;
     const storage = getStorage(app);
     const storageRef = ref(storage, fileName);
-    const file = stringToBlog(value);
-    const uploadTask = uploadBytesResumable(storageRef, file);
+    const uploadTask = uploadBytesResumable(storageRef, uploadedFile![0]);
 
     uploadTask.on(
       "state_changed",
       (snapshot) => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        setLoading({ loading: true, message: "paused" });
-
+        console.log("Upload is " + progress + "% done");
         switch (snapshot.state) {
           case "paused":
-            setLoading({ loading: true, message: "paused" });
+            setLoading({ loading: false, message: "Opplastingen pauset" });
             break;
           case "running":
-            setLoading({ loading: true, message: `${progress} % ferdig` });
+            setLoading({ loading: true, message: "Laster opp filen" });
             break;
+          default:
+            setLoading({ loading: false, message: "" });
         }
       },
       (error) => {
-        console.log(error);
+        setLoading({ loading: false, message: "An error has occured" });
         setErrorState({
           isError: true,
-          message: "Feil under opplasting av bilde..",
+          message: "Feil under opplasting av fil..",
           color: "red",
         });
+        console.log(error);
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          setUserInput({ ...userInput, [name]: downloadURL });
-          setErrorState({
-            isError: true,
-            message: "Bildet er lastet opp!",
-            color: "green",
-          });
-          setLoading({ loading: false, message: "" });
+          setUserInput({ ...userInput, [e.target.name]: downloadURL });
+        });
+        setLoading({ loading: false, message: "Filen er lastet opp!" });
+        setErrorState({
+          isError: true,
+          message: "Filen er lastet opp!",
+          color: "green",
         });
       }
     );
@@ -121,28 +120,16 @@ const AdminHeroSectionHandler = () => {
     <Wrapper>
       <Headline>Hero</Headline>
       <UnderText>Rediger bilde for hero seksjonen</UnderText>
-
       <Form style={{ marginTop: "3em" }}>
         <Label>Bilde</Label>
-        {/* <FileInputContainer
-          style={{ marginBottom: "1em" }}
-          onClick={() =>
-            (document.getElementById("file") as HTMLFormElement).click()
-          }
-        > */}
         <SmallText>Last Opp Bilde</SmallText>
         <FileInput
+          type="file"
           id="file"
           name="heroimg"
-          onChange={handleUpdateHeroContent}
+          onChange={handleFileUpload}
         ></FileInput>
-        {/* </FileInputContainer> */}
-
         <div>
-          {" "}
-          {/* <StyledBlueButton onClick={handleUpdateHeroContent}>
-            Last opp
-          </StyledBlueButton> */}
           <StyledBlueButton onClick={handleSendUpdate}>Send</StyledBlueButton>
         </div>
         {loading.loading && (

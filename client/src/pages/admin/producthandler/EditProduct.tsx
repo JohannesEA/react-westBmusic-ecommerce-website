@@ -1,4 +1,16 @@
+//functions and hooks
 import { useEffect, useState, MouseEvent, ChangeEvent } from "react";
+import { updateProduct } from "../../../apihandling/apiCalls";
+import { getProducts } from "../../../apihandling/apiCalls";
+
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import app from "../../../firebase";
+//styles
 import {
   Form,
   Label,
@@ -10,12 +22,16 @@ import {
 } from "../../../style/forms";
 import { SmallText } from "../../../style/text";
 import { StyledBlueButton } from "../../../style/buttons";
+//types
 import { Product } from "../../../models/Product";
-import { updateProduct } from "../../../apihandling/apiCalls";
-import { getProducts } from "../../../apihandling/apiCalls";
 
 const EditProduct = () => {
-  const [errorState, setErrorState] = useState({ isError: false, message: "" });
+  const [errorState, setErrorState] = useState({
+    isError: false,
+    message: "",
+    color: "",
+  });
+  const [loading, setLoading] = useState({ loading: false, message: "" });
   const [productToDelete, setProductToDelete] = useState<string>();
   const [products, setProducts] = useState([] as Product[]);
 
@@ -60,15 +76,52 @@ const EditProduct = () => {
     }
   };
 
-  const handleImageUpload = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleFileUpload = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    (document.getElementById("image") as HTMLFormElement).click();
-  };
+    const uploadedFile = e.currentTarget.files;
+    const fileName = new Date().getTime() + uploadedFile![0].name;
+    const storage = getStorage(app);
+    const storageRef = ref(storage, fileName);
+    const uploadTask = uploadBytesResumable(storageRef, uploadedFile![0]);
 
-  const handleMp3Upload = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
-    (document.getElementById("mp3") as HTMLFormElement).click();
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+        switch (snapshot.state) {
+          case "paused":
+            setLoading({ loading: false, message: "Opplastingen pauset" });
+            break;
+          case "running":
+            setLoading({ loading: true, message: "Laster opp filen" });
+            break;
+          default:
+            setLoading({ loading: false, message: "" });
+        }
+      },
+      (error) => {
+        setLoading({ loading: false, message: "An error has occured" });
+        setErrorState({
+          isError: true,
+          message: "Feil under opplasting av fil..",
+          color: "red",
+        });
+        console.log(error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setUserInput({ ...userInput, [e.target.name]: downloadURL });
+        });
+        setLoading({ loading: false, message: "Filen er lastet opp!" });
+        setErrorState({
+          isError: true,
+          message: "Filen er lastet opp!",
+          color: "green",
+        });
+      }
+    );
   };
 
   const handleUpdate = (e: MouseEvent<HTMLButtonElement>) => {
@@ -120,36 +173,24 @@ const EditProduct = () => {
           onChange={handleChange}
         />
         <Label>Bilde</Label>
-        <FileInputContainer
-          style={{ marginBottom: "1em" }}
-          onClick={handleImageUpload}
-        >
-          <SmallText>Last Opp Bilde</SmallText>
-          <FileInput
-            id="image"
-            name="image"
-            onChange={handleChange}
-          ></FileInput>
-        </FileInputContainer>
+
+        <FileInput
+          type="file"
+          id="image"
+          name="image"
+          onChange={handleFileUpload}
+        ></FileInput>
 
         <Label>Beat</Label>
-        <FileInputContainer
-          style={{ marginBottom: "1em" }}
-          onClick={handleMp3Upload}
-        >
-          <SmallText>Last Opp Beat</SmallText>
-          <FileInput id="mp3" name="mp3" onChange={handleChange}></FileInput>
-        </FileInputContainer>
-        <StyledBlueButton
-          onClick={() =>
-            setErrorState({
-              isError: true,
-              message: "Feil brukernavn eller passord.",
-            })
-          }
-        >
-          Send
-        </StyledBlueButton>
+
+        <FileInput
+          type="file"
+          id="mp3"
+          name="mp3"
+          onChange={handleFileUpload}
+        ></FileInput>
+
+        <StyledBlueButton onClick={handleUpdate}>Send</StyledBlueButton>
         {errorState.isError && (
           <ErrorMessage>{errorState.message}</ErrorMessage>
         )}

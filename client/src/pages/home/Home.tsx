@@ -36,17 +36,20 @@ const Home: React.FC<Props> = ({ addToCart }) => {
     <Container>
       <Navbar />
       <Hero
-        // image={
-        //   contents[0]?.heroimg !== undefined
-        //     ? contents[0].heroimg
-        //     : "/assets/images/img2.jpg"
-        // }
-        image={"/assets/images/img2.jpg"}
+        image={
+          contents[0]?.heroimg !== undefined
+            ? contents[0].heroimg
+            : "/assets/images/img2.jpg"
+        }
       />
       <About
         title={contents[0]?.abouttitle}
         undertitle={contents[0]?.aboutdesc}
-        image={ABOUT[0].image}
+        image={
+          contents[0]?.aboutimg !== undefined
+            ? contents[0].aboutimg
+            : "/assets/images/img1-rb.png"
+        }
       />
       <WorkProcess
         title={WORK[0].title}

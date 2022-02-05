@@ -1,4 +1,3 @@
-//Functions
 //Functions and hooks
 import { useState, useEffect, MouseEvent, ChangeEvent } from "react";
 import {
@@ -40,8 +39,6 @@ const CreateProduct = () => {
     price: 0,
   });
 
-  const stringToBlog = (txt: string) => new Blob([txt]);
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.persist();
     let value = e.target.value;
@@ -59,71 +56,58 @@ const CreateProduct = () => {
     }
   };
 
-  // const handleImageUpload = (e: MouseEvent<HTMLButtonElement>) => {
-  //   e.preventDefault();
-  //   (document.getElementById("image") as HTMLFormElement).click();
-  // };
-
   const handleFileUpload = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    let value = e.target.value;
-    let name = e.target.name;
-
-    const fileName = new Date().getTime() + value;
+    const uploadedFile = e.currentTarget.files;
+    const fileName = new Date().getTime() + uploadedFile![0].name;
     const storage = getStorage(app);
     const storageRef = ref(storage, fileName);
-    const file = stringToBlog(value);
-    const uploadTask = uploadBytesResumable(storageRef, file);
+    const uploadTask = uploadBytesResumable(storageRef, uploadedFile![0]);
 
     uploadTask.on(
       "state_changed",
       (snapshot) => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        setLoading({ loading: true, message: "paused" });
-
+        console.log("Upload is " + progress + "% done");
         switch (snapshot.state) {
           case "paused":
-            setLoading({ loading: true, message: "paused" });
+            setLoading({ loading: false, message: "Opplastingen pauset" });
             break;
           case "running":
-            setLoading({ loading: true, message: `${progress} % ferdig` });
+            setLoading({ loading: true, message: "Laster opp filen" });
             break;
+          default:
+            setLoading({ loading: false, message: "" });
         }
       },
       (error) => {
-        console.log(error);
+        setLoading({ loading: false, message: "An error has occured" });
         setErrorState({
           isError: true,
           message: "Feil under opplasting av fil..",
           color: "red",
         });
+        console.log(error);
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          setUserInput({ ...userInput, [name]: downloadURL });
-          setErrorState({
-            isError: true,
-            message: "Filen er lastet opp!",
-            color: "green",
-          });
-          setLoading({ loading: false, message: "" });
+          setUserInput({ ...userInput, [e.target.name]: downloadURL });
+        });
+        setLoading({ loading: false, message: "Filen er lastet opp!" });
+        setErrorState({
+          isError: true,
+          message: "Filen er lastet opp!",
+          color: "green",
         });
       }
     );
-  };
-
-  const handleMp3Upload = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
-    (document.getElementById("mp3") as HTMLFormElement).click();
   };
 
   const handleAddNewProduct = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     console.log("Product: ", userInput);
     addProduct(userInput);
-    // setSuccess(true)
   };
 
   return (
@@ -158,35 +142,21 @@ const CreateProduct = () => {
           onChange={handleChange}
         />
         <Label>Bilde</Label>
-        {/* <FileInputContainer
-          style={{ marginBottom: "1em" }}
-          onClick={handleImageUpload}
-        >
-          <SmallText>Last Opp Bilde</SmallText>
-          <FileInput
-            id="image"
-            name="image"
-            onChange={handleChange}
-          ></FileInput>
-        </FileInputContainer> */}
-
         <FileInput
+          type="file"
           id="image"
           name="image"
           onChange={handleFileUpload}
         ></FileInput>
-
         <Label>Beat</Label>
-
-        <FileInput id="mp3" name="mp3" onChange={handleFileUpload}></FileInput>
-        {/* <FileInputContainer
-          style={{ marginBottom: "1em" }}
-          onClick={handleMp3Upload}
-        >
-          <SmallText>Last Opp Beat</SmallText>
-          <FileInput id="mp3" name="mp3" onChange={handleChange}></FileInput>
-        </FileInputContainer> */}
+        <FileInput
+          type="file"
+          id="mp3"
+          name="mp3"
+          onChange={handleFileUpload}
+        ></FileInput>
         <StyledBlueButton onClick={handleAddNewProduct}>Send</StyledBlueButton>
+        {loading && <p>{loading.message}</p>}
         {errorState.isError && (
           <ErrorMessage>{errorState.message}</ErrorMessage>
         )}
