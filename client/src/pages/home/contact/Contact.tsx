@@ -30,6 +30,10 @@ const Contact = () => {
       <br></br>
 
       <Form>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no"
+        />
         <ContactContainer>
           <ContactInfoContainer>
             <BsFillPhoneFill fontSize={30} color="black" />

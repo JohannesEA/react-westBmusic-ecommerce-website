@@ -88,9 +88,9 @@ function App() {
   useEffect(() => {
     const handleLoadingOnLoad = () => {
       if (contents.length < 0) {
-        setIsLoading(true);
-      } else {
         setIsLoading(false);
+      } else {
+        setIsLoading(true);
       }
       handleLoadingOnLoad();
     };
