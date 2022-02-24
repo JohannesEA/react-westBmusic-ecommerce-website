@@ -30,11 +30,12 @@ import AdminHome from "./pages/admin/AdminHome";
 //Types
 import { Product } from "./models/Product";
 import { Content } from "./models/Content";
+import StripeContainer from "./components/stripe/StripeContainer";
 
 function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([] as Product[]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(
     localStorage.getItem("isAuthenticated")
   );
@@ -88,9 +89,9 @@ function App() {
   useEffect(() => {
     const handleLoadingOnLoad = () => {
       if (contents.length < 0) {
-        setIsLoading(false);
-      } else {
         setIsLoading(true);
+      } else {
+        setIsLoading(false);
       }
       handleLoadingOnLoad();
     };
@@ -100,7 +101,7 @@ function App() {
     setTimeout(() => localStorage.setItem("isAuthenticated", "false"), 150000);
   }, []);
 
-  if (isLoading) return <LoadingPage />;
+  if (!isLoading) return <LoadingPage />;
 
   return (
     <Router>
@@ -146,6 +147,7 @@ function App() {
 
         <Route path="/error" element={<Error />} />
         <Route path="*" element={<Error />} />
+        <Route path="/test" element={<StripeContainer />} />
       </Routes>
       <Footer />
     </Router>
