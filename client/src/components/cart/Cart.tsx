@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import StripeCheckout, { Token } from "react-stripe-checkout";
-import { publicRequest } from "../../requestMethods";
-import axios from "axios";
+import React from "react";
+// import StripeCheckout, { Token } from "react-stripe-checkout";
+// import { publicRequest } from "../../requestMethods";
+// import axios from "axios";
 //Components
 import CartItem from "./CartItem";
 
@@ -22,10 +22,10 @@ const KEY =
   "pk_test_51JwS4BDJ6KD8X4jUYGm2VeyofI9YOdonXbCHy3GB12JGM3gPHdY7l3qi9cd7fAvMsTtmiZdu0sjZWy20SxAghpui007JvXEC6j";
 
 const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
-  const [stripeToken, setStripeToken] = useState({} as Token);
-  const onToken = (token: any) => {
-    setStripeToken(token);
-  };
+  // const [stripeToken, setStripeToken] = useState({} as Token);
+  // const onToken = (token: any) => {
+  //   setStripeToken(token);
+  // };
 
   const calculateTotal = (items: Product[]) => {
     var price = 0;
@@ -37,46 +37,6 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
 
     return price;
   };
-
-  // useEffect(() => {
-  //   const makeRequest = async () => {
-  //     try {
-  //       if (cartItems.length > 0) {
-  //         const res = await axios.post(
-  //           "http://localhost:5000/api/checkout/payment",
-  //           {
-  //             tokenId: stripeToken.id,
-  //             amount: calculateTotal(cartItems),
-  //             currency: "usd",
-  //           }
-  //         );
-  //         console.log(res.data);
-  //       }
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   stripeToken && makeRequest();
-  // }, [stripeToken, calculateTotal(cartItems), cartItems]);
-  // useEffect(() => {
-  //   const makeRequest = async () => {
-  //     try {
-  //       if (cartItems.length > 0) {
-  //         const res = await axios.post(
-  //           "http://localhost:5000/api/checkout/vipps/payment",
-  //           {
-  //             items: cartItems,
-  //             amount: calculateTotal(cartItems),
-  //           }
-  //         );
-  //         console.log(res.data);
-  //       }
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   stripeToken && makeRequest();
-  // }, [stripeToken, calculateTotal(cartItems), cartItems]);
 
   return (
     <Wrapper>
@@ -95,7 +55,7 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
           ))}
           <h2>Total pris: {calculateTotal(cartItems)} NOK</h2>
           <Buttons>
-            <StripeCheckout
+            {/* <StripeCheckout
               stripeKey={KEY}
               name="WestBMusic"
               image="/assets/logos/logo1.png"
@@ -107,9 +67,9 @@ const Cart: React.FC<Props> = ({ cartItems, removeFromCart }) => {
               amount={calculateTotal(cartItems) * 100}
               token={onToken}
             >
-              {" "}
-              <StyledBlueButton>Sjekk ut</StyledBlueButton>
-            </StripeCheckout>
+              {" "} */}
+            <StyledBlueButton>Sjekk ut</StyledBlueButton>
+            {/* </StripeCheckout> */}
             <StyledOrangeButton
               onClick={() =>
                 alert("Denne betalingsmåten er ikke implementert enda..")
