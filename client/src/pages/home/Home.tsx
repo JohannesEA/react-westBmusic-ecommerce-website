@@ -40,7 +40,7 @@ const Home: React.FC<Props> = ({ addToCart }) => {
         image={
           contents[0]?.heroimg !== undefined
             ? contents[0].heroimg
-            : "/assets/images/img1.jpg"
+            : "/assets/images/img2.jpg"
         }
       />
       <About
